@@ -1,0 +1,108 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import WhatsappWidget from '../../../components/WhatsappWidget.astro';
+import FAQ from '../../../components/FAQ.astro';
+import posts from '../../../../blog-posts.json';
+
+const post = posts.find(p => p.slug === 'shopify-seo-pakistan-2026');
+const title = 'Shopify SEO Pakistan 2026: Rank Your Online Store on Google | SEO Ustaad';
+const description = 'Complete Shopify SEO guide for Pakistani merchants. Optimize product pages, collections, blog content, and technical SEO to drive organic traffic and sales from Google.';
+const canonicalUrl = 'https://www.seoustaad.com/blog/shopify-seo-pakistan/';
+---
+
+<Layout title={title} description={description} canonicalUrl={canonicalUrl}>
+  <Header slot="header" />
+
+  <section class="py-5" style="padding-top:140px!important;background:var(--bg-dark)">
+    <div class="container py-4">
+      <a href="/blog/" class="text-orange text-decoration-none small mb-3 d-inline-block">&larr; Back to Blog</a>
+      <article>
+        <header class="mb-5">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="badge bg-transparent border border-secondary text-secondary small px-3 py-2">2026-07-28</span>
+            <span class="text-orange small fw-semibold">{post ? post.category : 'Guide'}</span>
+          </div>
+          <h1 class="outfit display-4 fw-bold text-white mb-4">{post ? post.title : title}</h1>
+          <p class="lead text-gray" style="max-width:800px">{post ? post.excerpt : description}</p>
+        </header>
+
+        <div class="text-gray" style="max-width:850px;line-height:1.9;font-size:1.05rem">
+        <h2 class="h4 fw-bold text-white mt-5 mb-3">Why Shopify SEO is Critical for Pakistani Ecommerce in 2026</h2>
+        <p>Pakistan's ecommerce sector is growing at an extraordinary pace, and Shopify has emerged as the platform of choice for serious Pakistani merchants. But a Shopify store out of the box is not an optimized Shopify store.
+
+With Google AI Overviews now appearing on nearly 48% of search queries, traditional SEO alone isn't enough. Your Shopify store needs a comprehensive strategy that combines technical optimization, content marketing, and structured data to capture both traditional clicks and AI citations.
+
+The gap between an optimized and unoptimized Shopify store represents significant revenue. Stores that invest in proper SEO see 3-5x more organic traffic than those that rely solely on paid ads.</p>
+        <h2 class="h4 fw-bold text-white mt-5 mb-3">1. Product Page SEO: Where the Conversions Happen</h2>
+        <p>Product pages are your most valuable SEO assets. Each product page should be treated as a landing page targeting specific purchase-intent keywords.
+
+<strong>Title Tags:</strong> Format: "[Product Name] - [Brand] Buy in Pakistan | [Store Name]". Keep under 60 characters with the primary keyword first.
+
+<strong>Meta Descriptions:</strong> Include price, key feature, and a call to action. "Buy [Product] in Pakistan at [Price]. Free shipping in Karachi, Lahore & Islamabad. Official warranty included."
+
+<strong>Product Descriptions:</strong> Write unique, detailed descriptions. Avoid manufacturer copy-paste. Include measurements, materials, use cases, and care instructions.
+
+<strong>Image Alt Text:</strong> Describe the image naturally including the product name and context.
+
+<strong>Product Reviews:</strong> Enable and actively collect reviews. Review content is fresh, user-generated text that Google indexes.
+
+<strong>Structured Data:</strong> Ensure Product schema is properly implemented — including price (in PKR), availability, SKU, and aggregate rating.</p>
+        <h2 class="h4 fw-bold text-white mt-5 mb-3">2. Collection & Category Page Optimization</h2>
+        <p>Collection pages often drive more traffic than individual product pages because they target broader search terms.
+
+<strong>Collection Descriptions:</strong> Add 200-300 words of unique, keyword-optimized content at the top or bottom of collection pages. Describe what the collection offers and why it's valuable.
+
+<strong>Internal Linking Between Collections:</strong> Link related collections together. "Men's Formal Wear" should link to "Men's Shoes" and "Men's Accessories."
+
+<strong>SEO-Friendly Filters:</strong> Ensure filter and sorting options use clean URLs. Avoid JavaScript-dependent filtering that search engines can't crawl.
+
+<strong>Category Breadcrumbs:</strong> Implement breadcrumb navigation with proper schema markup.</p>
+        <h2 class="h4 fw-bold text-white mt-5 mb-3">3. Shopify Blog Strategy for Organic Traffic</h2>
+        <p>Your Shopify blog is a powerful traffic driver when done right.
+
+<strong>Map Blog Posts to Products:</strong> Every blog post should link to specific products or collections. A clothing brand's post on "How to Style Lawn Suits for Office in 2026" links to relevant lawn suit products.
+
+<strong>Target Informational Keywords:</strong> Create guides that answer customer questions: "How to measure kurta size," "Best fabric for Pakistani summer," "Caring for embroidered clothes."
+
+<strong>Seasonal & Trend Content:</strong> Publish content around Eid, wedding season, winter collections, and back-to-school.
+
+<strong>Product Roundups:</strong> "Top 10 Formal Shoes for Men in Pakistan 2026" captures comparison shoppers and links to your product pages.</p>
+        <h2 class="h4 fw-bold text-white mt-5 mb-3">4. Link Building for Shopify Stores in Pakistan</h2>
+        <p>Quality backlinks remain a top ranking factor. For Pakistani Shopify stores:
+
+<ul>
+<li><strong>Supplier & Brand Links:</strong> Get listed on official brand websites as an authorized retailer</li>
+<li><strong>Pakistani Fashion Bloggers:</strong> Send samples in exchange for honest reviews with links</li>
+<li><strong>Industry Directories:</strong> Get listed in Pakistani ecommerce directories</li>
+<li><strong>PR & News Mentions:</strong> Announce new collections or store openings to local news outlets</li>
+<li><strong>Guest Posts:</strong> Write for Pakistani lifestyle and fashion blogs with links back to your store</li>
+</ul></p>
+        <h2 class="h4 fw-bold text-white mt-5 mb-3">5. Tracking Shopify SEO Performance</h2>
+        <p>Monitor these key Shopify SEO metrics:
+<ul>
+<li><strong>Organic Traffic by Product/Collection</strong> — GA4 + Shopify Analytics</li>
+<li><strong>Search Console Performance</strong> — top queries, click-through rates, average position</li>
+<li><strong>Core Web Vitals</strong> — LCP, FID, CLS scores</li>
+<li><strong>Conversion Rate by Traffic Source</strong> — measure SEO's revenue impact</li>
+<li><strong>Index Coverage</strong> — ensure all important pages are indexed</li>
+</ul></p>
+
+          <div class="mt-5 p-4 rounded-4" style="background:var(--surface-dark);border:1px solid rgba(255,102,0,0.2)">
+            <h3 class="h5 fw-bold text-white mb-2">Ready to Grow Your Business?</h3>
+            <p class="mb-3">Need expert help with your Shopify store? Check out our <a href="/services/premium-ecommerce-seo-services/">Premium E-Commerce SEO Services</a> or <a href="/services/custom-shopify-development-services/">Custom Shopify Development</a>.</p>
+            <p class="small text-gray mb-0">Contact SEO Ustaad on <a href="https://wa.me/923146348900" class="text-orange">WhatsApp</a> or email <a href="mailto:support@seoustaad.com" class="text-orange">support@seoustaad.com</a> for a free consultation.</p>
+          </div>
+        </div>
+
+        <div class="mt-5" style="max-width:850px">
+          <FAQ category="shopify" />
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+  <WhatsappWidget slot="widget" />
+</Layout>

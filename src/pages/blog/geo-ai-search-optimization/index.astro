@@ -1,0 +1,119 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import WhatsappWidget from '../../../components/WhatsappWidget.astro';
+import FAQ from '../../../components/FAQ.astro';
+import posts from '../../../../blog-posts.json';
+
+const post = posts.find(p => p.slug === 'geo-ai-search-optimization-2026');
+const title = 'GEO & AI Search Optimization 2026: Get Cited in ChatGPT & Google AI Overviews | SEO Ustaad';
+const description = 'Learn Generative Engine Optimization (GEO) to get your Pakistani business cited in ChatGPT, Google AI Overviews, and Perplexity. Complete strategy guide with actionable techniques.';
+const canonicalUrl = 'https://www.seoustaad.com/blog/geo-ai-search-optimization/';
+---
+
+<Layout title={title} description={description} canonicalUrl={canonicalUrl}>
+  <Header slot="header" />
+
+  <section class="py-5" style="padding-top:140px!important;background:var(--bg-dark)">
+    <div class="container py-4">
+      <a href="/blog/" class="text-orange text-decoration-none small mb-3 d-inline-block">&larr; Back to Blog</a>
+      <article>
+        <header class="mb-5">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="badge bg-transparent border border-secondary text-secondary small px-3 py-2">2026-07-28</span>
+            <span class="text-orange small fw-semibold">{post ? post.category : 'Guide'}</span>
+          </div>
+          <h1 class="outfit display-4 fw-bold text-white mb-4">{post ? post.title : title}</h1>
+          <p class="lead text-gray" style="max-width:800px">{post ? post.excerpt : description}</p>
+        </header>
+
+        <div class="text-gray" style="max-width:850px;line-height:1.9;font-size:1.05rem">
+        <h2 class="h4 fw-bold text-white mt-5 mb-3">What is Generative Engine Optimization (GEO)?</h2>
+        <p>Generative Engine Optimization (GEO) is the practice of optimizing your website's content and structure to increase the likelihood of being cited as a source by AI-powered search engines — including Google AI Overviews, ChatGPT, Perplexity, and Gemini.
+
+Unlike traditional SEO which optimizes for blue-link rankings, GEO optimizes for AI citation. When a user asks "What is the best SEO agency in Lahore?" and an AI generates an answer, GEO determines whether your business is quoted, linked, or ignored.
+
+The shift is significant. BrightEdge data shows AI Overviews now appear on approximately 48% of tracked queries, and zero-click behavior jumps to 83% when an AI summary is present.</p>
+        <h2 class="h4 fw-bold text-white mt-5 mb-3">Why Pakistani Businesses Must Optimize for AI Search Now</h2>
+        <p>Pakistan-specific queries have less competition for AI citation slots compared to global English queries. A well-optimized article targeting "how to register a company in Pakistan" or "best digital marketing agency in Karachi" has a realistic shot at owning the AI citation position.
+
+The window of opportunity is closing. As more businesses optimize for AI search, the competition for citation slots will increase. Early adopters in Pakistan's market can establish authority that competitors will struggle to displace.
+
+AI Overviews are particularly impactful for Pakistani SMEs because they reduce dependency on expensive paid ads.</p>
+        <h2 class="h4 fw-bold text-white mt-5 mb-3">1. Structured Data & Schema Markup for AI Citations</h2>
+        <p>Schema markup is the single fastest way to make your content legible to AI engines. Structured data — code in JSON-LD format following schema.org vocabulary — tells AI engines exactly what your page contains.
+
+<strong>Essential Schema Types for Pakistani Businesses:</strong>
+<ul>
+<li><strong>Organization</strong> — your business name, logo, contact info, address in Pakistan</li>
+<li><strong>LocalBusiness</strong> — city-specific details, service areas, opening hours</li>
+<li><strong>Service</strong> — exactly what services you offer with descriptions and pricing</li>
+<li><strong>FAQPage</strong> — question-answer pairs that AI engines love to cite</li>
+<li><strong>Article</strong> — for blog content with author, date, and featured image</li>
+<li><strong>Product</strong> — for ecommerce with PKR pricing, availability, and reviews</li>
+<li><strong>BreadcrumbList</strong> — helps AI understand your site structure</li>
+</ul>
+
+Our <a href="/services/premium-schema-markup/">Premium Schema Markup service</a> implements all these schema types with proper JSON-LD markup.</p>
+        <h2 class="h4 fw-bold text-white mt-5 mb-3">2. Entity-Based Content Strategy</h2>
+        <p>AI engines understand content through entities — specific people, places, organizations, products, and concepts. Your content must clearly define these entities.
+
+<strong>For Pakistani Businesses, Define These Entities:</strong>
+<ul>
+<li>Your business type and location (e.g., "SEO agency in Lahore")</li>
+<li>Key people (founder, lead strategist, technical team)</li>
+<li>Services you offer with clear definitions</li>
+<li>Locations you serve (cities, areas, landmarks)</li>
+<li>Industry-specific concepts and terminology</li>
+</ul>
+
+Each entity should be mentioned explicitly with context. Instead of "we serve clients in major cities," write "SEO Ustaad serves clients in Karachi, Lahore, Islamabad, Faisalabad, and 25+ cities across Pakistan."</p>
+        <h2 class="h4 fw-bold text-white mt-5 mb-3">3. Author Authority & E-E-A-T Signals</h2>
+        <p>AI Overviews prefer to cite sources with named authors and verifiable expertise. Google's E-E-A-T framework (Experience, Expertise, Authoritativeness, Trustworthiness) is now directly connected to AI citation likelihood.
+
+<strong>Build Author Authority:</strong>
+<ul>
+<li>Assign each piece of content to a named author with a bio page</li>
+<li>Use Schema.org Person markup on author pages</li>
+<li>Link to author's professional profiles</li>
+<li>Showcase real experience — case studies, client results, certifications</li>
+</ul></p>
+        <h2 class="h4 fw-bold text-white mt-5 mb-3">4. Conversational Content & Q&A Formatting</h2>
+        <p>AI engines extract answers from content that directly addresses specific questions. Format your content for AI extraction:
+
+<ul>
+<li><strong>Answer questions directly</strong> in the opening paragraph — don't bury the answer</li>
+<li><strong>Use Q&A sections</strong> with natural language questions as subheadings</li>
+<li><strong>Keep paragraphs focused</strong> — one idea per paragraph makes extraction easier</li>
+<li><strong>Use tables and lists</strong> for comparative data — AI engines parse structured formats well</li>
+<li><strong>Define terms inline</strong> — helps AI identify concepts</li>
+</ul></p>
+        <h2 class="h4 fw-bold text-white mt-5 mb-3">5. Technical Foundation for AI Search</h2>
+        <p>Before AI engines can cite your content, they must be able to read it. Three technical requirements are non-negotiable:
+
+<strong>1. Server-Side Rendering:</strong> If your site uses JavaScript to render content, AI crawlers may see an empty page. Ensure critical content is delivered in the initial HTML response.
+
+<strong>2. Clean Internal Linking:</strong> AI engines use internal links to understand which pages are authoritative. Create clear hub-and-spoke architecture with one canonical page per topic.
+
+<strong>3. Crawlability:</strong> Ensure no robots.txt blocks, no orphan pages, and a clear XML sitemap.
+
+Need a technical audit? Our <a href="/services/premium-technical-seo-audit/">Technical SEO Audit</a> identifies exactly what's blocking AI crawlers.</p>
+
+          <div class="mt-5 p-4 rounded-4" style="background:var(--surface-dark);border:1px solid rgba(255,102,0,0.2)">
+            <h3 class="h5 fw-bold text-white mb-2">Ready to Grow Your Business?</h3>
+            <p class="mb-3">Get your business cited in AI search engines. Start with our <a href="/services/premium-schema-markup/">Premium Schema Markup</a> or <a href="/services/premium-technical-seo-audit/">Technical SEO Audit</a>.</p>
+            <p class="small text-gray mb-0">Contact SEO Ustaad on <a href="https://wa.me/923146348900" class="text-orange">WhatsApp</a> or email <a href="mailto:support@seoustaad.com" class="text-orange">support@seoustaad.com</a> for a free consultation.</p>
+          </div>
+        </div>
+
+        <div class="mt-5" style="max-width:850px">
+          <FAQ category="seo" />
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+  <WhatsappWidget slot="widget" />
+</Layout>

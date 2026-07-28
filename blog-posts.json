@@ -6,20 +6,57 @@
     "date": "2026-07-28",
     "category": "best-practices",
     "author": "SEO Ustaad Team",
-    "tags": [
-      "web development",
-      "core web vitals",
-      "performance",
-      "GEO",
-      "best practices",
-      "semantic HTML"
-    ],
-    "keywords": [
-      "web development best practices",
-      "web development",
-      "core web vitals",
-      "GEO",
-      "technical SEO"
-    ]
+    "tags": ["web development", "core web vitals", "performance", "GEO", "best practices", "semantic HTML"],
+    "keywords": ["web development best practices", "web development", "core web vitals", "GEO", "technical SEO"]
+  },
+  {
+    "slug": "local-seo-pakistan-guide-2026",
+    "title": "Local SEO Pakistan 2026: Dominate Google Maps & Near Me Searches in Karachi, Lahore & Islamabad",
+    "excerpt": "A complete guide to local SEO in Pakistan. Learn how to optimize your Google Business Profile, build local citations, and rank in the Map Pack for Pakistani cities.",
+    "date": "2026-07-28",
+    "category": "local-seo",
+    "author": "SEO Ustaad Team",
+    "tags": ["local SEO", "Pakistan", "Google Business Profile", "citations", "Map Pack", "Karachi", "Lahore", "Islamabad"],
+    "keywords": ["local SEO Pakistan", "local SEO services Pakistan", "GBP optimization", "local citations Pakistan"]
+  },
+  {
+    "slug": "shopify-seo-pakistan-2026",
+    "title": "Shopify SEO Pakistan 2026: How to Rank Your Online Store on Google",
+    "excerpt": "Complete Shopify SEO guide for Pakistani merchants. Optimize product pages, collections, and blog content to drive organic traffic and sales.",
+    "date": "2026-07-28",
+    "category": "shopify-seo",
+    "author": "SEO Ustaad Team",
+    "tags": ["Shopify SEO", "ecommerce Pakistan", "product page optimization", "Shopify", "organic traffic"],
+    "keywords": ["Shopify SEO Pakistan", "Shopify SEO services", "ecommerce SEO Pakistan", "Shopify optimization"]
+  },
+  {
+    "slug": "geo-ai-search-optimization-2026",
+    "title": "GEO & AI Search Optimization 2026: Get Your Business Cited in ChatGPT & Google AI Overviews",
+    "excerpt": "Learn Generative Engine Optimization (GEO) to get your Pakistani business cited in ChatGPT, Google AI Overviews, and Perplexity. A complete strategy guide.",
+    "date": "2026-07-28",
+    "category": "geo",
+    "author": "SEO Ustaad Team",
+    "tags": ["GEO", "AI search", "ChatGPT", "Google AI Overviews", "answer engine optimization", "Perplexity"],
+    "keywords": ["GEO", "generative engine optimization", "AI search optimization", "answer engine optimization", "ChatGPT SEO"]
+  },
+  {
+    "slug": "seo-pricing-pakistan-2026",
+    "title": "SEO Pricing in Pakistan 2026: How Much Do SEO Services Cost in PKR?",
+    "excerpt": "Transparent SEO pricing guide for Pakistani businesses. Compare local SEO, technical SEO, ecommerce SEO, and monthly retainer costs across Karachi, Lahore & Islamabad.",
+    "date": "2026-07-28",
+    "category": "guides",
+    "author": "SEO Ustaad Team",
+    "tags": ["SEO pricing", "SEO cost Pakistan", "digital marketing budget", "SEO packages", "affordable SEO"],
+    "keywords": ["SEO pricing Pakistan", "SEO cost Pakistan", "SEO services price in Pakistan", "affordable SEO Pakistan"]
+  },
+  {
+    "slug": "seo-mistakes-pakistan-2026",
+    "title": "7 SEO Mistakes Killing Pakistani Websites in 2026 — And How to Fix Them",
+    "excerpt": "Are SEO mistakes hurting your rankings? Discover the 7 most common SEO errors Pakistani websites make and learn exactly how to fix each one.",
+    "date": "2026-07-28",
+    "category": "guides",
+    "author": "SEO Ustaad Team",
+    "tags": ["SEO mistakes", "Pakistan SEO", "common errors", "technical SEO", "SEO audit", "fixes"],
+    "keywords": ["SEO mistakes Pakistan", "common SEO errors", "SEO audit Pakistan", "technical SEO Pakistan"]
   }
 ]

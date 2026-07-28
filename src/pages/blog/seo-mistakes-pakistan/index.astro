@@ -1,0 +1,138 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import WhatsappWidget from '../../../components/WhatsappWidget.astro';
+import FAQ from '../../../components/FAQ.astro';
+import posts from '../../../../blog-posts.json';
+
+const post = posts.find(p => p.slug === 'seo-mistakes-pakistan-2026');
+const title = '7 SEO Mistakes Killing Pakistani Websites in 2026 — And How to Fix Them | SEO Ustaad';
+const description = 'Discover the 7 most common SEO mistakes Pakistani websites make in 2026. Learn how to fix keyword stuffing, slow Core Web Vitals, missing schema, and more.';
+const canonicalUrl = 'https://www.seoustaad.com/blog/seo-mistakes-pakistan/';
+---
+
+<Layout title={title} description={description} canonicalUrl={canonicalUrl}>
+  <Header slot="header" />
+
+  <section class="py-5" style="padding-top:140px!important;background:var(--bg-dark)">
+    <div class="container py-4">
+      <a href="/blog/" class="text-orange text-decoration-none small mb-3 d-inline-block">&larr; Back to Blog</a>
+      <article>
+        <header class="mb-5">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="badge bg-transparent border border-secondary text-secondary small px-3 py-2">2026-07-28</span>
+            <span class="text-orange small fw-semibold">{post ? post.category : 'Guide'}</span>
+          </div>
+          <h1 class="outfit display-4 fw-bold text-white mb-4">{post ? post.title : title}</h1>
+          <p class="lead text-gray" style="max-width:800px">{post ? post.excerpt : description}</p>
+        </header>
+
+        <div class="text-gray" style="max-width:850px;line-height:1.9;font-size:1.05rem">
+        <h2 class="h4 fw-bold text-white mt-5 mb-3">Mistake #1: Keyword Stuffing Instead of Semantic Content</h2>
+        <p>Many Pakistani websites still stuff target keywords into content unnaturally, thinking more repetitions equal higher rankings. In 2026, this approach actively harms your SEO.
+
+<strong>The Problem:</strong> Google's AI-powered algorithms understand content semantically. Keyword stuffing makes your content read poorly, increases bounce rates, and can trigger spam penalties.
+
+<strong>The Fix:</strong> Write naturally for humans first. Use Latent Semantic Indexing (LSI) keywords — related terms that help Google understand your topic's context.
+
+<strong>SEO Ustaad's Approach:</strong> We optimize content for topical authority, not keyword density. Our <a href="/services/complete-onpage-seo-optimization/">Complete On-Page SEO</a> ensures comprehensive topical coverage.</p>
+        <h2 class="h4 fw-bold text-white mt-5 mb-3">Mistake #2: Ignoring Core Web Vitals & Page Speed</h2>
+        <p>Core Web Vitals — LCP, FID, CLS — have been direct ranking factors since 2024. Yet most Pakistani websites fail to meet Google's thresholds.
+
+<strong>The Problem:</strong> Slow hosting, unoptimized images, excessive JavaScript, and no caching. A typical Pakistani WordPress site loads in 4-8 seconds — Google's target is under 2.5 seconds for LCP.
+
+<strong>The Fix:</strong>
+<ul>
+<li>Switch to quality hosting (Cloudways, SiteGround)</li>
+<li>Compress images to WebP format</li>
+<li>Minify CSS, JavaScript, and HTML</li>
+<li>Implement browser caching</li>
+<li>Use a CDN for Pakistani and international visitors</li>
+<li>Remove unused plugins and themes</li>
+</ul>
+
+Our <a href="/services/advanced-core-web-vitals/">Advanced Core Web Vitals & PageSpeed Fixes</a> addresses all these issues.</p>
+        <h2 class="h4 fw-bold text-white mt-5 mb-3">Mistake #3: No Schema Markup / Structured Data</h2>
+        <p>Schema markup helps search engines understand your content. Pakistani websites that skip schema markup miss out on rich snippets, which can increase click-through rates by up to 30%.
+
+<strong>The Fix:</strong> Implement at minimum:
+<ul>
+<li><strong>Organization Schema</strong> — your business details</li>
+<li><strong>LocalBusiness Schema</strong> — for city-specific pages</li>
+<li><strong>Article Schema</strong> — for all blog content</li>
+<li><strong>FAQPage Schema</strong> — for question-answer content</li>
+<li><strong>BreadcrumbList Schema</strong> — for navigation</li>
+</ul>
+
+Our <a href="/services/premium-schema-markup/">Premium Schema Markup service</a> implements all schema types.</p>
+        <h2 class="h4 fw-bold text-white mt-5 mb-3">Mistake #4: Weak or Broken Internal Linking</h2>
+        <p>Internal links distribute authority (PageRank) across your site and help search engines understand your content hierarchy.
+
+<strong>The Problem:</strong> Many Pakistani websites have orphan pages — pages with no internal links. These pages rarely rank because search engines can't determine their importance.
+
+<strong>The Fix:</strong>
+<ul>
+<li>Create clear hub-and-spoke architecture</li>
+<li>Every service page links to 2-3 related services + 1 blog post</li>
+<li>Blog posts link to relevant service pages</li>
+<li>Use keyword-rich anchor text</li>
+<li>Submit XML sitemap to Google Search Console</li>
+</ul></p>
+        <h2 class="h4 fw-bold text-white mt-5 mb-3">Mistake #5: Not Optimizing for Mobile-First Index</h2>
+        <p>Google uses mobile-first indexing — it primarily uses the mobile version of your site for ranking and indexing.
+
+<strong>The Problem:</strong> Over 70% of Pakistani web traffic is mobile, yet many sites are designed for desktop first.
+
+<strong>The Fix:</strong>
+<ul>
+<li>Use responsive design (not separate mobile site)</li>
+<li>Test on actual mobile devices</li>
+<li>Ensure buttons are at least 48px touch targets</li>
+<li>Test page speed on 3G/4G connections</li>
+</ul></p>
+        <h2 class="h4 fw-bold text-white mt-5 mb-3">Mistake #6: Ignoring Local SEO (No GBP, No Citations)</h2>
+        <p>For businesses serving specific Pakistani cities, local SEO is not optional.
+
+<strong>The Problem:</strong> Businesses without an optimized Google Business Profile miss the Map Pack entirely. Inconsistent NAP across directories confuses Google.
+
+<strong>The Fix:</strong>
+<ul>
+<li>Claim and fully optimize your Google Business Profile</li>
+<li>Ensure NAP consistency across all directories</li>
+<li>Collect and respond to reviews actively</li>
+<li>Create city-specific landing pages</li>
+</ul>
+
+Need help? Our <a href="/services/premium-gmb-setup/">Premium GBP Setup</a> handles everything.</p>
+        <h2 class="h4 fw-bold text-white mt-5 mb-3">Mistake #7: Publishing Thin, Generic AI Content</h2>
+        <p>AI tools make content creation fast, but publishing unedited, generic AI content is a fast track to SEO failure.
+
+<strong>The Problem:</strong> Google's algorithm updates specifically target low-quality, AI-generated content. Thin content gets deindexed or ranked poorly.
+
+<strong>The Fix:</strong>
+<ul>
+<li>Use AI as an assistant, not a replacement for human expertise</li>
+<li>Add original research and Pakistan-specific data</li>
+<li>Include named authors with real experience</li>
+<li>Edit AI drafts thoroughly for accuracy and local relevance</li>
+<li>Target at least 1,500-2,000 words for comprehensive coverage</li>
+</ul></p>
+
+          <div class="mt-5 p-4 rounded-4" style="background:var(--surface-dark);border:1px solid rgba(255,102,0,0.2)">
+            <h3 class="h5 fw-bold text-white mb-2">Ready to Grow Your Business?</h3>
+            <p class="mb-3">Fix these mistakes today. Start with a <a href="/services/premium-technical-seo-audit/">Premium Technical SEO Audit</a> or <a href="/services/complete-onpage-seo-optimization/">Complete On-Page SEO Optimization</a>.</p>
+            <p class="small text-gray mb-0">Contact SEO Ustaad on <a href="https://wa.me/923146348900" class="text-orange">WhatsApp</a> or email <a href="mailto:support@seoustaad.com" class="text-orange">support@seoustaad.com</a> for a free consultation.</p>
+          </div>
+        </div>
+
+        <div class="mt-5" style="max-width:850px">
+          <FAQ category="seo" />
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+  <WhatsappWidget slot="widget" />
+</Layout>
