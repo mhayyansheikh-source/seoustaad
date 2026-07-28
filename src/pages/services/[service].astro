@@ -34,9 +34,18 @@ export function getStaticPaths() {
 const { gig, isMatrix, city, citySlug } = Astro.props;
 const slug = Astro.params.service;
 const title = isMatrix ? `${gig.name} in ${city} | SEO Ustaad` : `${gig.name} | SEO Ustaad`;
-const description = isMatrix 
+const keywordDescriptions = {
+  'custom-web-app-development': 'Custom web app development by SEO Ustaad. Build scalable, performant web applications with React, Next.js & Node.js. Starting at 30,000 PKR.',
+  'react-nextjs-development': 'React & Next.js development services. Modern, fast, and SEO-friendly web applications built by Pakistan\'s top dev agency. Starting at 30,000 PKR.',
+  'custom-software-development': 'Custom software development services — web apps, APIs, and enterprise solutions. SEO Ustaad delivers ROI-driven software at affordable prices.',
+  'web-application-development-services': 'Professional web application development services by SEO Ustaad. Build scalable, feature-rich web applications with modern tech stacks. Starting at 25,000 PKR.',
+  'custom-web-development-agency': 'Custom web development agency services by SEO Ustaad. Full-service web development, design, and SEO-optimized builds. Starting at 20,000 PKR.',
+  'website-development': 'Get professional website development services by SEO Ustaad. Custom web development, responsive design, and SEO-optimized sites starting at 20,000 PKR.',
+  'custom-website-development': 'Custom website development services tailored to your business. SEO Ustaad builds high-performance, GEO-optimized custom websites starting at 30,000 PKR.',
+};
+const description = isMatrix
     ? `Looking for ${gig.name} in ${city}? SEO Ustaad offers premium ${gig.category} services in ${city} starting at ${gig.price}. Dominate your local market today!`
-    : `Get professional ${gig.name} services by SEO Ustaad. We specialize in ROI-driven ${gig.category} and custom solutions for startups to boost your rankings. Premium quality starting at ${gig.price}. Order directly on WhatsApp!`;
+    : (keywordDescriptions[gig.slug] || `Get professional ${gig.name} services by SEO Ustaad. We specialize in ROI-driven ${gig.category} and custom solutions for startups to boost your rankings. Premium quality starting at ${gig.price}. Order directly on WhatsApp!`);
 const canonicalUrl = `https://www.seoustaad.com/services/${slug}/`;
 ---
 

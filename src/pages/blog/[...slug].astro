@@ -1,0 +1,50 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import WhatsappWidget from '../../components/WhatsappWidget.astro';
+import posts from '../../../blog-posts.json';
+
+export function getStaticPaths() {
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+const title = `${post.title} | SEO Ustaad Blog`;
+const description = post.excerpt;
+const canonicalUrl = `https://www.seoustaad.com/blog/${post.slug}/`;
+---
+
+<Layout title={title} description={description} canonicalUrl={canonicalUrl}>
+  <Header slot="header" />
+
+  <section class="py-5" style="padding-top:120px;background:var(--bg-dark)">
+    <div class="container py-4">
+      <a href="/blog/" class="text-orange text-decoration-none small mb-3 d-inline-block">&larr; Back to Blog</a>
+      <article>
+        <header class="mb-4">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="badge bg-transparent border border-secondary text-secondary small px-3 py-2">{post.date}</span>
+            <span class="text-orange small fw-semibold">{post.category}</span>
+          </div>
+          <h1 class="outfit display-5 fw-bold text-white mb-3">{post.title}</h1>
+          <p class="lead text-gray">{post.excerpt}</p>
+          <div class="d-flex flex-wrap gap-2 mt-3">
+            {post.tags.map(tag => (
+              <span class="badge bg-darker border border-secondary border-opacity-25 text-secondary small px-3 py-2">#{tag}</span>
+            ))}
+          </div>
+        </header>
+        <div class="text-gray" style="max-width:800px;line-height:1.8">
+          <slot />
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+  <WhatsappWidget slot="widget" />
+</Layout>

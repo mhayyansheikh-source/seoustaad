@@ -1,0 +1,98 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import WhatsappWidget from '../../../components/WhatsappWidget.astro';
+import FAQ from '../../../components/FAQ.astro';
+import posts from '../../../../blog-posts.json';
+
+const post = posts.find(p => p.slug === 'web-development-best-practices-2026');
+const title = 'Web Development Best Practices for 2026: Core Web Vitals, GEO & Performance | SEO Ustaad';
+const description = 'Master web development best practices for 2026. Learn Core Web Vitals optimization, Generative Engine Optimization (GEO), semantic HTML, and performance tuning from Pakistan\'s top dev agency.';
+const canonicalUrl = 'https://www.seoustaad.com/blog/web-development-best-practices/';
+---
+
+<Layout title={title} description={description} canonicalUrl={canonicalUrl}>
+  <Header slot="header" />
+
+  <section class="py-5" style="padding-top:120px;background:var(--bg-dark)">
+    <div class="container py-4">
+      <a href="/blog/" class="text-orange text-decoration-none small mb-3 d-inline-block">&larr; Back to Blog</a>
+      <article>
+        <header class="mb-5">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="badge bg-transparent border border-secondary text-secondary small px-3 py-2">2026-07-28</span>
+            <span class="text-orange small fw-semibold">Best Practices</span>
+          </div>
+          <h1 class="outfit display-4 fw-bold text-white mb-4">Web Development Best Practices for 2026: Core Web Vitals, GEO & Performance</h1>
+          <p class="lead text-gray" style="max-width:800px">Modern web development is no longer just about making things look good. In 2026, your site must load fast, rank on AI search engines, and deliver a seamless user experience. Here is your complete guide.</p>
+        </header>
+
+        <div class="text-gray" style="max-width:800px;line-height:1.9">
+
+          <h2 class="outfit h3 text-white mt-5 mb-3">1. Core Web Vitals Optimization</h2>
+          <p>Google's Core Web Vitals — Largest Contentful Paint (LCP), First Input Delay (FID), and Cumulative Layout Shift (CLS) — remain critical ranking factors in 2026. Every millisecond counts.</p>
+          <ul>
+            <li><strong>LCP under 2.5s:</strong> Optimize images, preload key resources, and use a CDN.</li>
+            <li><strong>FID under 100ms:</strong> Minimize JavaScript, use code splitting, and defer non-critical scripts.</li>
+            <li><strong>CLS under 0.1:</strong> Set explicit dimensions for images/embeds and avoid late-loading injects.</li>
+          </ul>
+          <p>Need expert help? SEO Ustaad offers <a href="/services/advanced-core-web-vitals/" class="text-orange">Advanced Core Web Vitals & PageSpeed Fixes</a> starting at just 25,000 PKR.</p>
+
+          <h2 class="outfit h3 text-white mt-5 mb-3">2. Semantic HTML & Structured Data</h2>
+          <p>Semantic HTML5 elements (<code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;nav&gt;</code>) help search engines understand your content hierarchy. Pair these with JSON-LD structured data to unlock rich results.</p>
+          <ul>
+            <li>Implement <strong>Article</strong>, <strong>FAQ</strong>, <strong>Product</strong>, and <strong>Organization</strong> schemas.</li>
+            <li>Use breadcrumb lists for clear navigation signals.</li>
+            <li>Add review snippets to build trust in SERPs.</li>
+          </ul>
+          <p>Get started with our <a href="/services/premium-schema-markup/" class="text-orange">Premium Schema Markup & Advanced Structured Data</a> service.</p>
+
+          <h2 class="outfit h3 text-white mt-5 mb-3">3. Generative Engine Optimization (GEO)</h2>
+          <p>In 2026, AI search engines like ChatGPT, Google SGE, Gemini, and Perplexity are driving a significant share of traffic. GEO ensures your content is cited as a primary source by these engines.</p>
+          <ul>
+            <li><strong>Answer questions directly</strong> — use FAQ schema and clear Q&A formatting.</li>
+            <li><strong>Write for conversational queries</strong> — optimize for natural language and long-tail questions.</li>
+            <li><strong>Build topical authority</strong> — create comprehensive pillar pages with internal linking.</li>
+          </ul>
+          <p>SEO Ustaad pioneered GEO in Pakistan. See our <a href="/services/" class="text-orange">full service lineup</a> for AEO/GEO solutions.</p>
+
+          <h2 class="outfit h3 text-white mt-5 mb-3">4. Performance Budgeting</h2>
+          <p>Set a performance budget for every project: JavaScript under 300KB, total page weight under 1MB, and fewer than 50 HTTP requests.</p>
+          <ul>
+            <li><strong>Code splitting</strong> — load only what is needed per route.</li>
+            <li><strong>Image optimization</strong> — use WebP/AVIF, lazy loading, and responsive srcsets.</li>
+            <li><strong>Font subsetting</strong> — include only the characters your site actually uses.</li>
+          </ul>
+
+          <h2 class="outfit h3 text-white mt-5 mb-3">5. Security Best Practices</h2>
+          <p>Security is a ranking factor. HTTPS is mandatory; CSP headers and input sanitization are table stakes.</p>
+          <ul>
+            <li>Enforce <strong>HTTPS</strong> with HSTS headers.</li>
+            <li>Implement <strong>Content Security Policy (CSP)</strong> to prevent XSS.</li>
+            <li>Validate and sanitize all user inputs on both client and server.</li>
+          </ul>
+
+          <h2 class="outfit h3 text-white mt-5 mb-3">6. Mobile-First Responsive Design</h2>
+          <p>Google indexes mobile-first. Design for small screens first, then scale up. Touch targets should be at least 48x48px and font sizes no smaller than 16px.</p>
+
+          <hr class="border-secondary my-5" />
+
+          <div class="bg-darker p-4 rounded-4 border border-secondary border-opacity-25 mb-4">
+            <h3 class="outfit h4 text-white mb-3">Need Help Implementing These Best Practices?</h3>
+            <p class="mb-3">SEO Ustaad combines all six disciplines — performance, semantics, GEO, security, responsive design, and AI readiness — in every project we deliver.</p>
+            <a href="https://wa.me/923146348900" class="btn btn-orange btn-glow px-4 py-2 fw-bold">
+              <i class="fab fa-whatsapp me-2"></i>Talk to an Expert
+            </a>
+            <a href="/services/" class="btn btn-outline-orange ms-2 px-4 py-2 fw-bold">View Services</a>
+          </div>
+        </div>
+      </article>
+
+      <FAQ count={4} category="web" city="Pakistan" gigName="Web Development Best Practices" />
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+  <WhatsappWidget slot="widget" />
+</Layout>

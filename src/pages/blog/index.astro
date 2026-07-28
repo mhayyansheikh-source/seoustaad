@@ -1,0 +1,64 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import WhatsappWidget from '../../components/WhatsappWidget.astro';
+import posts from '../../../blog-posts.json';
+
+const sortedPosts = [...posts].sort((a, b) => new Date(b.date) - new Date(a.date));
+const categoryLabels = {
+  'best-practices': 'Best Practices',
+  'news': 'Web Dev News',
+  'guide': 'Guide',
+};
+const categoryColors = {
+  'best-practices': 'text-info',
+  'news': 'text-warning',
+  'guide': 'text-success',
+};
+---
+
+<Layout
+  title="Blog | SEO Ustaad — Web Development News & Best Practices"
+  description="Latest web development news, best practices, React tips, and digital insights from SEO Ustaad, Pakistan's #1 digital agency."
+  canonicalUrl="https://www.seoustaad.com/blog/"
+>
+  <Header slot="header" />
+
+  <section class="py-5" style="padding-top:140px!important;background:var(--bg-dark)">
+    <div class="container py-4 text-center">
+      <span class="badge text-orange border border-orange border-opacity-50 bg-transparent px-3 py-2 mb-3 rounded-pill">Insights</span>
+      <h1 class="outfit display-4 fw-bold text-white mb-3">SEO Ustaad <span class="text-orange">Blog</span></h1>
+      <p class="text-gray lead mx-auto" style="max-width:600px">
+        Web development best practices, industry news, React & Next.js tips, and digital growth strategies from Pakistan's top agency.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-5 bg-dark">
+    <div class="container">
+      <div class="row g-4">
+        {sortedPosts.map(post => (
+          <div class="col-lg-4 col-md-6">
+            <a href={`/blog/${post.slug}/`} class="text-decoration-none">
+              <div class="card h-100 bg-darker border-secondary border-opacity-25 text-white p-4 rounded-4" style="transition:transform .2s,border-color .2s" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(255,102,0,.5)'" onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(255,255,255,.07)'">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="badge bg-transparent border border-secondary text-secondary small px-2 py-1">{post.date}</span>
+                  <span class={`small fw-semibold ${categoryColors[post.category] || 'text-secondary'}`}>{categoryLabels[post.category] || post.category}</span>
+                </div>
+                <h3 class="h5 fw-bold outfit mb-2 text-white">{post.title}</h3>
+                <p class="text-gray small mb-0">{post.excerpt}</p>
+                <div class="mt-3">
+                  <span class="text-orange small fw-semibold">Read More &rarr;</span>
+                </div>
+              </div>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+  <WhatsappWidget slot="widget" />
+</Layout>

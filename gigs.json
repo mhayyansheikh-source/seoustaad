@@ -358,5 +358,35 @@
     "category": "wordpress",
     "price": "35,000 PKR",
     "slug": "ecommerce-wordpress-woocommerce-development"
+  },
+  {
+    "name": "Custom Web App Development",
+    "price": "30,000 PKR",
+    "category": "web",
+    "slug": "custom-web-app-development"
+  },
+  {
+    "name": "React & Next.js Development",
+    "price": "30,000 PKR",
+    "category": "web",
+    "slug": "react-nextjs-development"
+  },
+  {
+    "name": "Custom Software Development",
+    "price": "30,000 PKR",
+    "category": "web",
+    "slug": "custom-software-development"
+  },
+  {
+    "name": "Web Application Development Services",
+    "price": "25,000 PKR",
+    "category": "web",
+    "slug": "web-application-development-services"
+  },
+  {
+    "name": "Custom Web Development Agency",
+    "price": "20,000 PKR",
+    "category": "web",
+    "slug": "custom-web-development-agency"
   }
 ]
