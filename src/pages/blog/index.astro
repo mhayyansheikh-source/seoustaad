@@ -4,20 +4,8 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import WhatsappWidget from '../../components/WhatsappWidget.astro';
 import posts from '../../../blog-posts.json';
-import { DROPSHIPPING_CITIES } from '../../data/dropshipping-cities';
 
-const cityPosts = DROPSHIPPING_CITIES.map(city => ({
-  slug: `shopify-dropshipping-${city.slug}`,
-  title: `Shopify Dropshipping in ${city.name} 2026: Complete Local Guide`,
-  excerpt: `Start a profitable Shopify dropshipping business in ${city.name}. Local suppliers, COD delivery, and winning Meta & TikTok ad strategies for the ${city.name} market.`,
-  date: '2026-09-01',
-  category: 'shopify-seo',
-  author: 'SEO Ustaad Team',
-  tags: [`Shopify ${city.name}`, 'Dropshipping', 'Meta Ads', 'TikTok Ads', 'COD'],
-  keywords: [`shopify dropshipping ${city.slug}`, `dropshipping ${city.slug}`]
-}));
-
-const sortedPosts = [...posts, ...cityPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
+const sortedPosts = [...posts].sort((a, b) => new Date(b.date) - new Date(a.date));
 const categoryLabels = {
   'best-practices': 'Best Practices',
   'news': 'Web Dev News',

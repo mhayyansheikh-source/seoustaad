@@ -4,12 +4,32 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import WhatsappWidget from '../../components/WhatsappWidget.astro';
 import posts from '../../../blog-posts.json';
+import { DROPSHIPPING_CITIES } from '../../data/dropshipping-cities';
 
 export function getStaticPaths() {
-  return posts.map(post => ({
-    params: { slug: post.slug },
-    props: { post }
-  }));
+  const hasDedicatedPage = new Set([
+    ...DROPSHIPPING_CITIES.map(c => `shopify-dropshipping-${c.slug}`),
+    'backend-development-guide',
+    'geo-ai-search-optimization',
+    'how-to-choose-web-development-company',
+    'local-seo-pakistan-guide',
+    'pakistan-vs-india-web-development',
+    'python-web-framework-guide',
+    'seo-mistakes-pakistan',
+    'seo-pricing-pakistan',
+    'shopify-dropshipping-pakistan-guide',
+    'shopify-seo-pakistan',
+    'tiktok-meta-ads-ecommerce-pakistan-guide',
+    'web-dev-news-monthly',
+    'web-development-best-practices',
+    'wordpress-vs-shopify-pakistan',
+  ]);
+  return posts
+    .filter(post => !hasDedicatedPage.has(post.slug))
+    .map(post => ({
+      params: { slug: post.slug },
+      props: { post }
+    }));
 }
 
 const { post } = Astro.props;
