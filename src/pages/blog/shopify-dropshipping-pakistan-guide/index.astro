@@ -4,6 +4,11 @@ import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import WhatsappWidget from '../../../components/WhatsappWidget.astro';
 import FAQ from '../../../components/FAQ.astro';
+import { DROPSHIPPING_CITIES } from '../../../data/dropshipping-cities';
+
+const cityLinks = DROPSHIPPING_CITIES.map(city =>
+  `<a href="/blog/shopify-dropshipping-${city.slug}/" class="text-orange text-decoration-none border-bottom border-orange border-opacity-25 pb-1 d-inline-block">${city.name}</a>`
+).join(' · ');
 
 const title = 'Shopify Dropshipping in Pakistan 2026: Local Suppliers, HHC, PostEx & Winning Strategy | SEO Ustaad';
 const description = 'The definitive 2026 guide to Shopify dropshipping in Pakistan. Learn local sourcing with HHC Dropshipping & Zambeel, PostEx courier integration, Meta & TikTok ad scaling, and Shopify store SEO.';
@@ -198,6 +203,10 @@ const canonicalUrl = 'https://www.seoustaad.com/blog/shopify-dropshipping-pakist
             <li><strong>Selling Fragile or Low-Quality Items:</strong> Products that break during courier transit result in angry customer complaints, chargebacks, and social media brand damage. Always test sample units yourself first.</li>
             <li><strong>Ignoring Customer Support:</strong> Promptly answering WhatsApp inquiries regarding order tracking builds brand trust, leading to repeat sales and positive word-of-mouth recommendations.</li>
           </ul>
+
+          <h2 id="city-guides" class="outfit h3 text-ivory mt-5 mb-3">City-Specific Dropshipping Guides</h2>
+          <p>Every Pakistani city has its own buyer psychology, price sensitivity and logistics reality. Dive into our dedicated city-by-city Shopify dropshipping playbooks:</p>
+          <p class="small lh-lg" style="max-width:850px" set:html={cityLinks}></p>
 
           <h2 id="why-seoustaad" class="outfit h3 text-ivory mt-5 mb-3">11. How SEO Ustaad Helps You Build, Rank & Scale Your E-commerce Brand</h2>
           <p>At <strong>SEO Ustaad</strong>, we specialize in helping Pakistani entrepreneurs, direct-to-consumer (D2C) brands, and enterprise retailers launch and scale world-class e-commerce stores.</p>
