@@ -20,6 +20,10 @@ export function getStaticPaths() {
             params: { service: gig.slug },
             props: { gig, isMatrix: false, city: null, citySlug: null }
         });
+        // Gigs whose slug already bakes in a location (e.g. "website-development-in-karachi")
+        // must not be run through the city matrix again — that produced nonsense duplicates
+        // like "website-development-in-karachi-in-karachi".
+        if (gig.slug.includes('-in-')) return;
         cities.forEach(city => {
             const citySlug = city.toLowerCase().replace(/\s+/g, '-');
             paths.push({
@@ -47,9 +51,36 @@ const description = isMatrix
     ? `Looking for ${gig.name} in ${city}? SEO Ustaad offers premium ${gig.category} services in ${city} starting at ${gig.price}. Dominate your local market today!`
     : (keywordDescriptions[gig.slug] || `Get professional ${gig.name} services by SEO Ustaad. We specialize in ROI-driven ${gig.category} and custom solutions for startups to boost your rankings. Premium quality starting at ${gig.price}. Order directly on WhatsApp!`);
 const canonicalUrl = `https://www.seoustaad.com/services/${slug}/`;
+const priceAmount = (gig.price.match(/[\d,]+/)?.[0] || '').replace(/,/g, '');
+
+const serviceSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": isMatrix ? `${gig.name} in ${city}` : gig.name,
+    "description": description,
+    "serviceType": gig.category,
+    "provider": {
+        "@type": "ProfessionalService",
+        "name": "SEO Ustaad",
+        "url": "https://seoustaad.com/"
+    },
+    ...(isMatrix && {
+        "areaServed": {
+            "@type": "City",
+            "name": city
+        }
+    }),
+    "offers": {
+        "@type": "Offer",
+        "price": priceAmount,
+        "priceCurrency": "PKR",
+        "url": canonicalUrl
+    }
+});
 ---
 
 <Layout title={title} description={description} canonicalUrl={canonicalUrl}>
+    <script type="application/ld+json" set:html={serviceSchema} slot="header" />
     <Header slot="header" />
     
     <header class="hero-section" style="padding-top:120px">
@@ -90,7 +121,7 @@ const canonicalUrl = `https://www.seoustaad.com/services/${slug}/`;
                     </ul>
                 </div>
                 <div class="col-lg-6 text-center">
-                    <img src="/images/logo.svg" alt="SEO Ustaad Local Authority" class="img-fluid rounded-4 shadow-lg opacity-75" style="max-width:300px;mix-blend-mode:screen">
+                    <img src="/images/logo.svg" alt="SEO Ustaad Local Authority" width="300" height="300" class="img-fluid rounded-4 shadow-lg opacity-75" style="max-width:300px;mix-blend-mode:screen">
                 </div>
             </div>
         </div>
@@ -111,7 +142,7 @@ const canonicalUrl = `https://www.seoustaad.com/services/${slug}/`;
         </div>
     </section>
 
-    <FAQ count={5} category={gig.category} city={city || 'Pakistan'} gigName={gig.name} />
+    <FAQ count={5} category={gig.category} city={city || 'Pakistan'} citySlug={citySlug} gigName={gig.name} />
     <Footer slot="footer" />
     <WhatsappWidget slot="widget" />
 </Layout>

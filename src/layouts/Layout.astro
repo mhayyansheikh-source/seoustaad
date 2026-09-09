@@ -6,6 +6,45 @@ export interface Props {
 }
 
 const { title, description = "Premium SEO, Web Development, and SMM services for the Pakistani market.", canonicalUrl } = Astro.props;
+
+const organizationSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "ProfessionalService",
+            "@id": "https://seoustaad.com/#organization",
+            "name": "SEO Ustaad",
+            "url": "https://seoustaad.com/",
+            "logo": "https://seoustaad.com/images/logo.svg",
+            "image": "https://seoustaad.com/og-image.png",
+            "description": "Premium SEO, Web Development, and Social Media Marketing agency serving Pakistan.",
+            "areaServed": {
+                "@type": "Country",
+                "name": "Pakistan"
+            },
+            "sameAs": []
+        },
+        {
+            "@type": "WebSite",
+            "@id": "https://seoustaad.com/#website",
+            "url": "https://seoustaad.com/",
+            "name": "SEO Ustaad",
+            "publisher": {
+                "@id": "https://seoustaad.com/#organization"
+            }
+        },
+        {
+            "@type": "WebPage",
+            "@id": `${canonicalUrl || Astro.url}#webpage`,
+            "url": canonicalUrl || Astro.url,
+            "name": title,
+            "description": description,
+            "isPartOf": {
+                "@id": "https://seoustaad.com/#website"
+            }
+        }
+    ]
+});
 ---
 
 <!DOCTYPE html>
@@ -42,6 +81,7 @@ const { title, description = "Premium SEO, Web Development, and SMM services for
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://seoustaad.com/og-image.png">
+    <script type="application/ld+json" set:html={organizationSchema} />
 </head>
 <body>
     <slot name="header" />

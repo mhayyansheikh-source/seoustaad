@@ -1,7 +1,7 @@
 ---
 import faqsData from '../../faqs.json';
 
-const { category = 'general', count = 5, city = 'Pakistan', gigName = 'our services' } = Astro.props;
+const { category = 'general', count = 5, city = 'Pakistan', citySlug = null, gigName = 'our services' } = Astro.props;
 const availableFaqs = faqsData[category] || faqsData['general'] || [];
 
 // Simple shuffle function
@@ -24,7 +24,14 @@ const accordionId = `faqAccordion_${Math.random().toString(36).substring(2, 9)}`
                         const headingId = `${accordionId}_heading${index}`;
                         const collapseId = `${accordionId}_collapse${index}`;
                         const processedQ = faq.q.replace(/__CITY__/g, city).replace(/__GIG_NAME__/g, gigName);
-                        const processedA = faq.a.replace(/__CITY__/g, city).replace(/__GIG_NAME__/g, gigName);
+                        // Links in FAQ answers point to city-specific service pages (e.g. /services/x-in-__CITY_SLUG__/).
+                        // Without a real citySlug there is no such page, so collapse "-in-__CITY_SLUG__" back to the
+                        // generic (non-city) service URL instead of leaking the literal placeholder into the href.
+                        const processedA = faq.a
+                            .replace(/__CITY__/g, city)
+                            .replace(/__GIG_NAME__/g, gigName)
+                            .replace(/-in-__CITY_SLUG__/g, citySlug ? `-in-${citySlug}` : '')
+                            .replace(/__CITY_SLUG__/g, citySlug || '');
                         
                         return (
                             <div class="accordion-item bg-transparent border-0 mb-3" style="background:var(--surface-dark-elevated);border:1px solid rgba(255,255,255,.08);border-radius:12px">

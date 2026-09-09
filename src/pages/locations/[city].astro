@@ -21,11 +21,26 @@ const title = `SEO Agency in ${city} | SEO Ustaad`;
 const description = `Looking for a local SEO consultant in ${city}? SEO Ustaad provides premium eCommerce web design services and affordable WordPress developers in ${city} starting at just 5,000 PKR. Dominate your local market today!`;
 const canonicalUrl = `https://www.seoustaad.com/locations/${slug}/`;
 
-const servicesInCityHtml = gigs.map(gig => 
+const servicesInCityHtml = gigs.map(gig =>
   `<li style="flex: 1 1 300px;"><a href="/services/${gig.slug}-in-${citySlug}/" class="text-orange text-decoration-none border-bottom border-orange border-opacity-25 pb-1 d-inline-block hover-lift"><i class="fas fa-chevron-right small me-2"></i>${gig.name}</a></li>`
 ).join('');
+
+const localBusinessSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": `SEO Ustaad - ${city}`,
+  "description": description,
+  "url": canonicalUrl,
+  "image": "https://seoustaad.com/images/logo.svg",
+  "priceRange": "5,000 PKR - 45,000 PKR",
+  "areaServed": {
+    "@type": "City",
+    "name": city
+  }
+});
 ---
 <Layout title={title} description={description} canonicalUrl={canonicalUrl}>
+    <script type="application/ld+json" set:html={localBusinessSchema} slot="header" />
     <Header slot="header" />
     
     <header class="hero-section" style="padding-top:120px">
@@ -37,8 +52,8 @@ const servicesInCityHtml = gigs.map(gig =>
             <div class="badge bg-darker border border-white border-opacity-25 px-3 py-2 rounded-pill mb-4 text-white small d-inline-flex align-items-center mx-auto mx-lg-0 glow-effect">
               <span class="pulse-dot bg-orange rounded-circle me-2"></span> Top Rated Agency
             </div>
-            <h1 class="display-3 fw-bold mb-4 outfit lh-sm">Dominate Digital Search<br><span class="text-gradient">With SEO Ustaad</span></h1>
-            <p class="lead text-gray mb-5">Premium local SEO and Web Development services starting at just 5,000 PKR.</p>
+            <h1 class="display-3 fw-bold mb-4 outfit lh-sm">SEO Agency in {city}<br><span class="text-gradient">Dominate Local Search</span></h1>
+            <p class="lead text-gray mb-5">Premium local SEO and Web Development services in {city} starting at just 5,000 PKR.</p>
             <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
               <a href="/services/" class="btn btn-orange px-4 py-3 fw-semibold">View Our 25 Premium Gigs</a>
             </div>
@@ -63,7 +78,7 @@ const servicesInCityHtml = gigs.map(gig =>
             </ul>
           </div>
           <div class="col-lg-6 text-center">
-            <img src="/images/logo.svg" alt="SEO Ustaad Local Authority" class="img-fluid rounded-4 shadow-lg opacity-75" style="max-width:300px;mix-blend-mode:screen">
+            <img src="/images/logo.svg" alt="SEO Ustaad Local Authority" width="300" height="300" class="img-fluid rounded-4 shadow-lg opacity-75" style="max-width:300px;mix-blend-mode:screen">
           </div>
         </div>
       </div>
@@ -80,7 +95,7 @@ const servicesInCityHtml = gigs.map(gig =>
       </div>
     </section>
     
-    <FAQ count={5} category="general" city={city} gigName="digital marketing services" />
+    <FAQ count={5} category="general" city={city} citySlug={citySlug} gigName="digital marketing services" />
     <Footer slot="footer" />
     <WhatsappWidget slot="widget" />
 </Layout>
