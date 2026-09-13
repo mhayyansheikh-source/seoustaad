@@ -37,5 +37,8 @@ User-agent: Applebot-Extended
 Allow: /
 
 # Sitemaps
+Sitemap: https://www.seoustaad.com/sitemap.xml
 Sitemap: https://www.seoustaad.com/sitemap-index.xml
 Sitemap: https://www.seoustaad.com/sitemap-0.xml
+Sitemap: https://seoustaad.com/sitemap.xml
+Sitemap: https://seoustaad.com/sitemap-index.xml
