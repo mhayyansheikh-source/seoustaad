@@ -13,9 +13,14 @@ export const opinlyConfig = {
 };
 
 // Singleton Opinly client configured with site details
+// Uses process.env.OPINLY_API_KEY with a safe fallback to prevent build crashes in CI if not set
+const apiKey = process.env.OPINLY_API_KEY || 'sk-build-placeholder';
+
 export const opinly = createOpinlyClient({
+  apiKey,
   site: {
     siteUrl: opinlyConfig.siteUrl,
     blogPrefix: opinlyConfig.blogPrefix,
   },
 });
+
