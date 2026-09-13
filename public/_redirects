@@ -1,0 +1,2 @@
+# Redirect www to apex (Cloudflare Pages)
+https://www.seoustaad.com/* https://seoustaad.com/:splat 301
