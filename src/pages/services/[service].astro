@@ -37,7 +37,49 @@ export function getStaticPaths() {
 
 const { gig, isMatrix, city, citySlug } = Astro.props;
 const slug = Astro.params.service;
-const title = isMatrix ? `${gig.name} in ${city} | SEO Ustaad` : `${gig.name} | SEO Ustaad`;
+
+// Optimize titles to ensure they stay within Google's 50-60 character limit without truncation
+const cleanGigName = gig.name
+  .replace(/\s*\[.*?\]/g, '')
+  .replace(/\s*\(.*?\)/g, '')
+  .replace(/\s*–\s*Full Store Setup/g, '')
+  .trim()
+  .replace('Comprehensive Keyword Research & Competitor Gap Analysis', 'Keyword Research & Competitor Analysis')
+  .replace('Premium Google Business Profile Setup & Ranking', 'Google Business Profile Setup & Ranking')
+  .replace('Highly-Converting Geo-Targeted Landing Page Copywriting', 'Geo-Targeted Landing Page Copywriting')
+  .replace('Premium Custom WordPress development full website', 'Custom WordPress Website Development')
+  .replace('Premium custom Shopify Store development and Setup', 'Custom Shopify Store Development')
+  .replace('Premium Disavow Toxic Backlinks & Penalty Recovery', 'Toxic Backlinks Disavow & Penalty Recovery')
+  .replace('Premium Schema Markup & Advanced Structured Data', 'Schema Markup & Advanced Structured Data')
+  .replace('Complete On-Page SEO Optimization', 'On-Page SEO Optimization')
+  .replace('Premium Local Citations & High-DA Directory Listings', 'Local Citations & Directory Listings')
+  .replace('Premium Local SEO Monthly Retainer', 'Local SEO Monthly Retainer')
+  .replace('Premium Shopify/WooCommerce Product SEO', 'Shopify & WooCommerce Product SEO')
+  .replace('Advanced Conversion Rate Optimization Audit', 'Conversion Rate Optimization (CRO) Audit')
+  .replace('Premium E-Commerce Architecture & Silo Restructure', 'E-Commerce Architecture & Silo Restructure')
+  .replace('Advanced Competitor Backlink Intercept Strategy', 'Competitor Backlink Intercept Strategy')
+  .replace('High-Converting Ad Copywriting & Creative Strategy', 'Ad Copywriting & Creative Strategy')
+  .replace('5 Ultra High-DR Guest Post Backlinks', '5 High-DR Guest Post Backlinks')
+  .replace('Premium Social Media Management', 'Social Media Management')
+  .replace('Website Development Company in Pakistan', 'Website Development Company')
+  .replace('Website Development Services in Pakistan', 'Website Development Services')
+  .replace('Website Development Cost in Pakistan', 'Website Development Cost')
+  .replace('Website Development Price in Pakistan', 'Website Development Price')
+  .replace('Website Development Company in Karachi', 'Web Development Company Karachi')
+  .replace('Website Development Company in Islamabad', 'Web Development Company Islamabad')
+  .replace('Advanced E-Commerce SEO Strategy & Packages', 'E-Commerce SEO Strategy & Packages')
+  .replace('E-Commerce WordPress & WooCommerce Development', 'WooCommerce & WordPress Development')
+  .replace('Shopify Development Partner', 'Shopify Development Services');
+
+let formattedTitle = isMatrix ? `${cleanGigName} in ${city} | SEO Ustaad` : `${cleanGigName} | SEO Ustaad`;
+if (formattedTitle.length > 60) {
+  const maxLen = 60 - (isMatrix ? ` in ${city} | SEO Ustaad`.length : ' | SEO Ustaad'.length);
+  if (maxLen > 10) {
+    const trimmed = cleanGigName.slice(0, maxLen).trim().replace(/[,&–-]$/, '');
+    formattedTitle = isMatrix ? `${trimmed} in ${city} | SEO Ustaad` : `${trimmed} | SEO Ustaad`;
+  }
+}
+const title = formattedTitle;
 const keywordDescriptions = {
   'custom-web-app-development': 'Custom web app development by SEO Ustaad. Build scalable, performant web applications with React, Next.js & Node.js. Starting at 30,000 PKR.',
   'react-nextjs-development': 'React & Next.js development services. Modern, fast, and SEO-friendly web applications built by Pakistan\'s top dev agency. Starting at 30,000 PKR.',
@@ -121,7 +163,7 @@ const serviceSchema = JSON.stringify({
                     </ul>
                 </div>
                 <div class="col-lg-6 text-center">
-                    <img src="/images/logo.svg" alt="SEO Ustaad Local Authority" width="300" height="300" class="img-fluid rounded-4 shadow-lg opacity-75" style="max-width:300px;mix-blend-mode:screen">
+                    <img src="/images/logo.svg" alt={`SEO Ustaad ${gig.name}`} title={`SEO Ustaad — ${gig.name}`} width="300" height="300" class="img-fluid rounded-4 shadow-lg opacity-75" style="max-width:300px;mix-blend-mode:screen">
                 </div>
             </div>
         </div>

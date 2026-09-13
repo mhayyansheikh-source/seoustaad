@@ -6,6 +6,7 @@ import WhatsappWidget from '../../components/WhatsappWidget.astro';
 import FAQ from '../../components/FAQ.astro';
 import LeadForm from '../../components/LeadForm.astro';
 import gigs from '../../../gigs.json';
+import { DROPSHIPPING_CITIES } from '../../data/dropshipping-cities.js';
 
 export function getStaticPaths() {
   const cities = ["Karachi","Lahore","Faisalabad","Rawalpindi","Gujranwala","Peshawar","Multan","Hyderabad","Islamabad","Quetta","Bahawalpur","Sargodha","Sialkot","Sukkur","Larkana","Sheikhupura","Rahim Yar Khan","Jhang","Dera Ghazi Khan","Gujrat","Sahiwal","Wah Cantonment","Mardan","Kasur","Okara"];
@@ -17,8 +18,20 @@ export function getStaticPaths() {
 
 const { city, citySlug } = Astro.props;
 const slug = Astro.params.city;
+
+// Retrieve rich unique city demographic & economic intelligence
+const cityData = DROPSHIPPING_CITIES.find(
+  c => c.name.toLowerCase() === city.toLowerCase() || c.slug === citySlug
+) || {
+  region: 'Pakistan',
+  population: 'hundreds of thousands',
+  intro: `${city} is one of Pakistan's key commercial centers with rapidly accelerating digital commerce adoption and expanding local businesses.`,
+  economy: `a growing commercial ecosystem of local retailers, distributors, and service providers across ${city}`,
+  landmark: `the primary commercial markets and trade hubs of ${city}`
+};
+
 const title = `SEO Agency in ${city} | SEO Ustaad`;
-const description = `Looking for a local SEO consultant in ${city}? SEO Ustaad provides premium eCommerce web design services and affordable WordPress developers in ${city} starting at just 5,000 PKR. Dominate your local market today!`;
+const description = `Top SEO agency in ${city}. Boost Google Maps, AEO citations & organic revenue in ${city} from 5,000 PKR. Free audit on WhatsApp.`;
 const canonicalUrl = `https://www.seoustaad.com/locations/${slug}/`;
 
 const servicesInCityHtml = gigs
@@ -26,7 +39,6 @@ const servicesInCityHtml = gigs
   .map(gig =>
     `<li style="flex: 1 1 300px;"><a href="/services/${gig.slug}-in-${citySlug}/" class="text-orange text-decoration-none border-bottom border-orange border-opacity-25 pb-1 d-inline-block hover-lift"><i class="fas fa-chevron-right small me-2"></i>${gig.name}</a></li>`
   ).join('');
-
 
 const localBusinessSchema = JSON.stringify({
   "@context": "https://schema.org",
@@ -38,7 +50,11 @@ const localBusinessSchema = JSON.stringify({
   "priceRange": "5,000 PKR - 45,000 PKR",
   "areaServed": {
     "@type": "City",
-    "name": city
+    "name": city,
+    "containedInPlace": {
+      "@type": "State",
+      "name": cityData.region
+    }
   }
 });
 ---
@@ -53,10 +69,17 @@ const localBusinessSchema = JSON.stringify({
         <div class="row align-items-center g-5">
           <div class="col-lg-6 text-center text-lg-start stagger-reveal">
             <div class="badge bg-darker border border-white border-opacity-25 px-3 py-2 rounded-pill mb-4 text-white small d-inline-flex align-items-center mx-auto mx-lg-0 glow-effect">
-              <span class="pulse-dot bg-orange rounded-circle me-2"></span> Top Rated Agency
+              <span class="pulse-dot bg-orange rounded-circle me-2"></span> Top Rated Agency in {cityData.region}
             </div>
             <h1 class="display-3 fw-bold mb-4 outfit lh-sm">SEO Agency in {city}<br><span class="text-gradient">Dominate Local Search</span></h1>
-            <p class="lead text-gray mb-5">Premium local SEO and Web Development services in {city} starting at just 5,000 PKR.</p>
+            <p class="lead text-gray mb-4">Empowering businesses across {city} with data-driven Search Engine Optimization, Google Business Profile ranking, and high-converting web architecture starting at just 5,000 PKR.</p>
+            <div class="p-3 rounded-3 mb-4 text-start" style="background:var(--surface-dark-elevated);border:1px solid rgba(255,255,255,.08)">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <i class="fas fa-map-marker-alt text-orange"></i>
+                <span class="text-white fw-bold small">Market Intelligence: {city}, {cityData.region}</span>
+              </div>
+              <p class="text-gray small mb-0">{cityData.intro}</p>
+            </div>
             <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
               <a href="/services/" class="btn btn-orange px-4 py-3 fw-semibold">View Our 25 Premium Gigs</a>
             </div>
@@ -68,37 +91,91 @@ const localBusinessSchema = JSON.stringify({
       </div>
     </header>
 
-    <section id="about-us" class="py-5 bg-darker">
+    <!-- Local Economic Analysis & Search Opportunity -->
+    <section class="py-5 bg-darker border-top border-white border-opacity-10">
+      <div class="container py-4">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-7">
+            <span class="text-orange text-uppercase fw-bold small tracking-wider">Local Search Landscape</span>
+            <h2 class="outfit display-6 text-white mt-2">Why Local SEO is Vital for Businesses in <span class="text-orange">{city}</span></h2>
+            <p class="text-gray mt-3">With a population of <strong>{cityData.population}</strong>, {city} represents {cityData.economy}. Whether your customers are discovering you through voice search on smartphones or searching on Google Maps {cityData.landmark}, having unmatched local digital visibility is the difference between thriving and losing market share to aggressive competitors.</p>
+            <p class="text-gray">Our localized search campaigns focus on ranking your entity inside the Google Local 3-Pack, earning GEO citations in ChatGPT and Gemini, and capturing high-intent "near me" inquiries across {city}.</p>
+            <div class="row g-3 mt-2">
+              <div class="col-sm-6">
+                <div class="p-3 rounded-3" style="background:var(--surface-dark);border:1px solid rgba(255,255,255,.05)">
+                  <div class="text-orange fw-bold fs-4 mb-1">Top 3</div>
+                  <div class="text-white small fw-semibold">Google Maps 3-Pack Target</div>
+                  <p class="text-gray x-small mb-0 mt-1">Direct geo-grid optimization for {city} consumer queries.</p>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="p-3 rounded-3" style="background:var(--surface-dark);border:1px solid rgba(255,255,255,.05)">
+                  <div class="text-orange fw-bold fs-4 mb-1">5,000 PKR</div>
+                  <div class="text-white small fw-semibold">Accessible Entry Packages</div>
+                  <p class="text-gray x-small mb-0 mt-1">High-ROI execution without high retainer lock-ins.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="p-4 rounded-4" style="background:var(--surface-dark);border:1px solid rgba(204,120,92,.2)">
+              <h3 class="h5 text-white outfit mb-3"><i class="fas fa-bullseye text-orange me-2"></i>{city} SEO Strategic Pillars</h3>
+              <ul class="list-unstyled text-gray small mb-0">
+                <li class="d-flex align-items-start gap-2 mb-3">
+                  <i class="fas fa-check-circle text-orange mt-1"></i>
+                  <span><strong>Google Business Profile (GBP) Domination:</strong> Keyword-optimized categories, geotagged photos, and verified review acquisition tailored to {city}.</span>
+                </li>
+                <li class="d-flex align-items-start gap-2 mb-3">
+                  <i class="fas fa-check-circle text-orange mt-1"></i>
+                  <span><strong>Hyper-Local Citation Building:</strong> Consistent NAP data submissions to reputable Pakistani directories and commercial registries.</span>
+                </li>
+                <li class="d-flex align-items-start gap-2 mb-3">
+                  <i class="fas fa-check-circle text-orange mt-1"></i>
+                  <span><strong>Generative Engine Optimization (GEO):</strong> Optimizing entity presence so AI engines recommend your {city} brand for local commerce.</span>
+                </li>
+                <li class="d-flex align-items-start gap-2">
+                  <i class="fas fa-check-circle text-orange mt-1"></i>
+                  <span><strong>Speed & Mobile Conversion:</strong> Lightning-fast page loads engineered for high-converting smartphone traffic across 4G/5G networks.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about-us" class="py-5 bg-dark">
       <div class="container py-5">
         <div class="row align-items-center g-5">
           <div class="col-lg-6">
             <h2 class="outfit display-5 text-white">Local Authority <span class="text-orange">You Can Trust</span></h2>
             <p class="text-gray lead mt-3">We don't just do basic SEO. We engineer generative engine optimized entities that rank on Google, ChatGPT, and Gemini.</p>
             <ul class="list-unstyled text-white mt-4">
-              <li class="mb-3"><i class="fas fa-check-circle text-orange me-2"></i> Over 1,000+ Local Businesses Scaled</li>
-              <li class="mb-3"><i class="fas fa-check-circle text-orange me-2"></i> Data-Driven 25-Gig Methodology</li>
-              <li class="mb-3"><i class="fas fa-check-circle text-orange me-2"></i> Transparent Pricing (5k - 30k PKR)</li>
+              <li class="mb-3"><i class="fas fa-check-circle text-orange me-2"></i> Over 1,000+ Local Businesses Scaled Across Pakistan</li>
+              <li class="mb-3"><i class="fas fa-check-circle text-orange me-2"></i> Data-Driven 25-Gig Methodology for {city} Retailers</li>
+              <li class="mb-3"><i class="fas fa-check-circle text-orange me-2"></i> Transparent Fixed Pricing (5,000 - 30,000 PKR)</li>
             </ul>
           </div>
           <div class="col-lg-6 text-center">
-            <img src="/images/logo.svg" alt="SEO Ustaad Local Authority" width="300" height="300" class="img-fluid rounded-4 shadow-lg opacity-75" style="max-width:300px;mix-blend-mode:screen">
+            <img src="/images/logo.svg" alt={`SEO Ustaad Local Authority in ${city}`} title={`SEO Ustaad Local Search Excellence — ${city}`} width="300" height="300" class="img-fluid rounded-4 shadow-lg opacity-75" style="max-width:300px;mix-blend-mode:screen">
           </div>
         </div>
       </div>
     </section>
 
     <!-- Services Directory in City -->
-    <section class="py-5 bg-dark">
+    <section class="py-5 bg-darker">
       <div class="container py-5">
         <div class="text-center mb-5">
           <h2 class="outfit display-5 text-white">Our Services in <span class="text-orange">{city}</span></h2>
-          <p class="text-gray">Select one of our specialized local search and web optimization packages built for {city} startups.</p>
+          <p class="text-gray">Select one of our specialized local search and web optimization packages built for {city} startups and expanding enterprises.</p>
         </div>
         <ul class="list-unstyled d-flex flex-wrap gap-4 justify-content-center p-0" set:html={servicesInCityHtml}></ul>
       </div>
     </section>
     
-    <FAQ count={5} category="general" city={city} citySlug={citySlug} gigName="digital marketing services" />
+    <FAQ count={5} category="general" city={city} citySlug={citySlug} gigName={`local SEO and web development services in ${city}`} />
     <Footer slot="footer" />
     <WhatsappWidget slot="widget" />
 </Layout>
+

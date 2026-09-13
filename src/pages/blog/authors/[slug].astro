@@ -53,7 +53,7 @@ const personJsonLd = authorData ? buildPersonJsonLd(authorData, opinlyConfig) : 
       <a href="/blog/authors/" class="text-orange text-decoration-none small mb-3 d-inline-block">&larr; Back to Authors</a>
       <div class="d-flex justify-content-center mb-3">
         {authorData?.avatar_url ? (
-          <img src={authorData.avatar_url} alt={authorData.name} class="rounded-circle border border-orange border-opacity-50" style="width:90px;height:90px;object-fit:cover;" />
+          <img src={authorData.avatar_url} alt={authorData.name} title={`SEO Ustaad Contributor — ${authorData.name}`} class="rounded-circle border border-orange border-opacity-50" style="width:90px;height:90px;object-fit:cover;" />
         ) : (
           <div class="avatar-init bg-orange rounded-circle d-flex align-items-center justify-content-center text-white fw-bold fs-3" style="width:90px;height:90px;">
             {authorData?.name ? authorData.name[0] : 'A'}
