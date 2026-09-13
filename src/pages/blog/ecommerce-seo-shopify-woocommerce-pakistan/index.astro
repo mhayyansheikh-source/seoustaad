@@ -1,0 +1,98 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import WhatsappWidget from '../../../components/WhatsappWidget.astro';
+import FAQ from '../../../components/FAQ.astro';
+import posts from '../../../../blog-posts.json';
+
+const post = posts.find(p => p.slug === 'ecommerce-seo-shopify-woocommerce-pakistan');
+const title = 'E-Commerce SEO for Shopify & WooCommerce Pakistan 2026: Product & Category Page Optimization | SEO Ustaad';
+const description = 'Why your Shopify or WooCommerce store gets traffic but no sales — and the exact product page, category page, and conversion fixes that turn browsers into buyers in Pakistan.';
+const canonicalUrl = 'https://www.seoustaad.com/blog/ecommerce-seo-shopify-woocommerce-pakistan/';
+---
+
+<Layout title={title} description={description} canonicalUrl={canonicalUrl}>
+  <Header slot="header" />
+
+  <section class="py-5" style="padding-top:140px!important;background:var(--bg-dark)">
+    <div class="container py-4">
+      <a href="/blog/" class="text-orange text-decoration-none small mb-3 d-inline-block">&larr; Back to Blog</a>
+      <article>
+        <header class="mb-5">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="badge bg-transparent border border-secondary text-secondary small px-3 py-2">2026-09-13</span>
+            <span class="text-orange small fw-semibold">{post ? post.category : 'Guide'}</span>
+          </div>
+          <h1 class="outfit display-4 fw-bold text-ivory mb-4">{post ? post.title : title}</h1>
+          <p class="lead text-gray" style="max-width:800px">{post ? post.excerpt : description}</p>
+        </header>
+
+        <div class="text-gray" style="max-width:850px;line-height:1.9;font-size:1.05rem">
+        <h2 class="h4 fw-bold text-ivory mt-5 mb-3">Why Your Store Gets Traffic But Not Sales</h2>
+        <p>Every week we talk to Pakistani store owners who've launched a Shopify or WooCommerce store, run some ads, and gotten visitors — but almost no organic sales. The pattern is almost always the same: the store was built to look good, not to be found or to convert once found.
+
+E-commerce SEO is different from SEO for a normal website because you're optimizing hundreds or thousands of near-duplicate product pages at once, competing against Daraz, Telemart, and international stores, all while trying to turn a cold visitor into a paying customer in a single session. Here's the framework we use.</p>
+
+        <h2 class="h4 fw-bold text-ivory mt-5 mb-3">1. Product Page SEO: Where Most Stores Lose the Sale</h2>
+        <p><strong>Unique product descriptions.</strong> Copying the manufacturer's description (or worse, a competitor's) means Google sees duplicate content and won't rank you above the original source. Write a genuine 150-300 word description covering the problem the product solves, materials/specs, and why a Pakistani buyer should choose it.
+
+<strong>Title tag formula:</strong> [Product Name] – [Key Attribute] | Buy Online in Pakistan | [Brand]. Include the attribute buyers actually search for — size, color, material — not just the SKU name.
+
+<strong>Image optimization:</strong> Compress every product image (aim under 150KB without visible quality loss) and use descriptive file names and alt text like "black-leather-handbag-women-pakistan.jpg" instead of "IMG_4821.jpg". This helps both page speed and Google Image search traffic, which drives real e-commerce sales in Pakistan.
+
+<strong>Reviews and ratings:</strong> Product schema with AggregateRating makes star ratings appear directly in Google search results, which measurably increases click-through rate. Reviews also add fresh, unique content to every product page automatically.
+
+<strong>Price and availability schema:</strong> Mark up price (in PKR) and stock status so Google can show it directly in search results — critical for price-sensitive Pakistani shoppers deciding which listing to click.</p>
+
+        <h2 class="h4 fw-bold text-ivory mt-5 mb-3">2. Category & Collection Page SEO</h2>
+        <p>Category pages (like /collections/womens-shoes/) are your highest-potential organic pages because they target higher-volume, less specific keywords than individual products.
+
+<ul>
+<li><strong>Add real content:</strong> 200-400 words of genuinely useful text above or below the product grid — buying guide points, size charts, or "how to choose" advice. Bare product grids with zero text rarely rank for competitive category terms.</li>
+<li><strong>Control filter/pagination URLs:</strong> Shopify and WooCommerce generate endless URL variations from filters and sort options. Use canonical tags to point all of these back to the clean category URL so you don't dilute ranking signals or waste crawl budget.</li>
+<li><strong>Logical category structure:</strong> Keep your site architecture shallow — homepage to category to product in as few clicks as possible. Deep nesting buries products from both users and Googlebot.</li>
+</ul></p>
+
+        <h2 class="h4 fw-bold text-ivory mt-5 mb-3">3. Site Structure & Internal Linking for Stores</h2>
+        <p>Link related products to each other ("You may also like," "Frequently bought together") and link blog content to relevant product/category pages. A buying-guide blog post ranking for "best winter jackets Pakistan" that links directly into your winter jackets collection turns organic content into a sales funnel — not just traffic.
+
+Breadcrumb navigation (Home > Category > Product) should be visible on every page and marked up with BreadcrumbList schema — it improves both usability and how your URLs display in search results.</p>
+
+        <h2 class="h4 fw-bold text-ivory mt-5 mb-3">4. Site Speed on Shopify & WooCommerce</h2>
+        <p>E-commerce stores are especially prone to speed problems because of heavy apps, large images, and third-party scripts (chat widgets, review apps, upsell popups) all loading at once.
+
+<strong>On Shopify:</strong> Audit installed apps ruthlessly — every app adds its own JavaScript. Remove anything not actively driving sales. Use Shopify's native image optimization and lazy-load below-the-fold images.
+
+<strong>On WooCommerce:</strong> Use a caching plugin, a lightweight theme, and a CDN. WooCommerce sites on shared hosting with too many plugins are the single most common speed problem we see in Pakistani stores. See our full <a href="/blog/technical-seo-audit-guide-pakistan/">technical SEO audit guide</a> for the complete Core Web Vitals checklist.</p>
+
+        <h2 class="h4 fw-bold text-ivory mt-5 mb-3">5. Conversion Fixes That Work Alongside SEO</h2>
+        <p>Ranking well only matters if visitors actually buy. Quick wins we implement alongside SEO work:
+
+<ul>
+<li><strong>Trust signals above the fold:</strong> COD availability, delivery timelines, and return policy visible on every product page — critical for Pakistani buyers still building trust in online shopping.</li>
+<li><strong>WhatsApp checkout support:</strong> Many Pakistani buyers want to confirm an order via WhatsApp before paying — make this option visible, not hidden.</li>
+<li><strong>Clear PKR pricing:</strong> No currency confusion, no hidden shipping costs revealed only at checkout.</li>
+<li><strong>Mobile checkout flow:</strong> Test your entire checkout on a mid-range Android phone — this is how most of your traffic will actually buy.</li>
+</ul></p>
+
+        <h2 class="h4 fw-bold text-ivory mt-5 mb-3">Shopify vs WooCommerce for SEO in Pakistan</h2>
+        <p>Both platforms can rank well when configured correctly. Shopify handles technical SEO basics (sitemaps, speed infrastructure) automatically but limits some customization without apps or custom code. WooCommerce gives full control over every technical detail but requires more hands-on maintenance to keep fast and secure. Read our full <a href="/blog/wordpress-vs-shopify-pakistan/">Shopify vs WordPress comparison</a> for the complete breakdown, and our dedicated <a href="/blog/shopify-seo-pakistan/">Shopify SEO guide</a> for Shopify-specific tactics.</p>
+
+          <div class="mt-5 p-4 rounded-4" style="background:var(--surface-dark);border:1px solid rgba(255,102,0,0.2)">
+            <h3 class="h5 fw-bold text-ivory mb-2">Get Your Store Audited for Free</h3>
+            <p class="mb-3">Our <a href="/services/premium-ecommerce-seo-services/">Premium E-Commerce SEO service</a> covers full product and category optimization, plus dedicated <a href="/services/shopify-seo-services/">Shopify SEO services</a> if that's your platform.</p>
+            <p class="small text-gray mb-0">Contact SEO Ustaad on <a href="https://wa.me/923146348900" class="text-orange">WhatsApp</a> or email <a href="mailto:support@seoustaad.com" class="text-orange">support@seoustaad.com</a> for a free store audit.</p>
+          </div>
+        </div>
+
+        <div class="mt-5" style="max-width:850px">
+          <FAQ category="ecom" />
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+  <WhatsappWidget slot="widget" />
+</Layout>

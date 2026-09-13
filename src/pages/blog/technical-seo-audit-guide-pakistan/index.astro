@@ -1,0 +1,126 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import WhatsappWidget from '../../../components/WhatsappWidget.astro';
+import FAQ from '../../../components/FAQ.astro';
+import posts from '../../../../blog-posts.json';
+
+const post = posts.find(p => p.slug === 'technical-seo-audit-guide-pakistan');
+const title = 'Technical SEO Audit Guide 2026: Fix Core Web Vitals, Crawl Errors & Site Speed | SEO Ustaad';
+const description = 'A complete technical SEO audit checklist for Pakistani websites — Core Web Vitals, crawlability, indexing, site speed, mobile usability, and schema markup fixes that move rankings.';
+const canonicalUrl = 'https://www.seoustaad.com/blog/technical-seo-audit-guide-pakistan/';
+---
+
+<Layout title={title} description={description} canonicalUrl={canonicalUrl}>
+  <Header slot="header" />
+
+  <section class="py-5" style="padding-top:140px!important;background:var(--bg-dark)">
+    <div class="container py-4">
+      <a href="/blog/" class="text-orange text-decoration-none small mb-3 d-inline-block">&larr; Back to Blog</a>
+      <article>
+        <header class="mb-5">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="badge bg-transparent border border-secondary text-secondary small px-3 py-2">2026-09-13</span>
+            <span class="text-orange small fw-semibold">{post ? post.category : 'Guide'}</span>
+          </div>
+          <h1 class="outfit display-4 fw-bold text-ivory mb-4">{post ? post.title : title}</h1>
+          <p class="lead text-gray" style="max-width:800px">{post ? post.excerpt : description}</p>
+        </header>
+
+        <div class="text-gray" style="max-width:850px;line-height:1.9;font-size:1.05rem">
+        <h2 class="h4 fw-bold text-ivory mt-5 mb-3">Why Technical SEO Is the Foundation Pakistani Businesses Skip</h2>
+        <p>Most Pakistani business owners invest in content and backlinks while ignoring the technical layer underneath — and then wonder why rankings stall. Technical SEO is the plumbing: if Google can't crawl your site efficiently, can't index your pages, or your site loads slowly on a 4G connection in Faisalabad, none of your content or link-building work matters.
+
+A technical SEO audit finds and fixes the structural issues stopping your site from ranking — before you spend another rupee on content. Here's the exact checklist we run on every client site.</p>
+
+        <h2 class="h4 fw-bold text-ivory mt-5 mb-3">1. Core Web Vitals: The Speed Metrics Google Actually Measures</h2>
+        <p>Google ranks pages partly on real-world loading experience, measured through three Core Web Vitals:
+
+<strong>Largest Contentful Paint (LCP):</strong> How fast your main content loads. Target under 2.5 seconds. Pakistani sites often fail this due to unoptimized hero images and render-blocking scripts loaded from slow CDNs.
+
+<strong>Interaction to Next Paint (INP):</strong> How quickly your site responds when a user taps or clicks. Bloated JavaScript from page builders and third-party widgets is the usual culprit.
+
+<strong>Cumulative Layout Shift (CLS):</strong> How much your page jumps around while loading. Ads and images without defined dimensions are the most common cause on Pakistani e-commerce and news sites.
+
+<strong>Why this matters more in Pakistan:</strong> A large share of Pakistani traffic comes from mid-range Android devices on 3G/4G networks, not fibre-connected desktops. Sites that "feel fast" to a developer on office wifi can be unusably slow for a real customer in Multan. Our <a href="/services/advanced-core-web-vitals/">Core Web Vitals optimization service</a> targets exactly this gap — compressing images, deferring non-critical JavaScript, and fixing layout shift.</p>
+
+        <h2 class="h4 fw-bold text-ivory mt-5 mb-3">2. Crawlability: Can Google Actually Reach Your Pages?</h2>
+        <p>Before Google can rank a page, it has to find and crawl it. Common crawlability problems we find in Pakistani sites:
+
+<ul>
+<li><strong>Broken or missing XML sitemap</strong> — Google relies on this to discover all your pages, especially product and blog pages that aren't linked from the homepage.</li>
+<li><strong>Misconfigured robots.txt</strong> — we regularly find sites accidentally blocking entire folders (like /blog/ or /products/) from being crawled at all.</li>
+<li><strong>Orphan pages</strong> — pages with no internal links pointing to them, which Googlebot may never discover.</li>
+<li><strong>Crawl budget waste</strong> — thin filter/pagination URLs on Shopify and WooCommerce stores that eat up crawl budget Google should spend on real product pages.</li>
+</ul>
+
+Run your sitemap through Google Search Console's "Pages" report monthly and check for a growing "Discovered — currently not indexed" count — that's your earliest warning sign.</p>
+
+        <h2 class="h4 fw-bold text-ivory mt-5 mb-3">3. Indexing Issues: Pages That Exist But Don't Rank</h2>
+        <p>A page can be perfectly crawlable and still fail to get indexed. The most common causes we see:
+
+<strong>Accidental noindex tags:</strong> Left over from a staging environment, or set by a page builder plugin by default on new pages.
+
+<strong>Duplicate content without canonical tags:</strong> Shopify and WooCommerce stores frequently generate multiple URLs for the same product (via collection filters, tags, or search parameters) without a canonical tag pointing back to the primary URL — splitting ranking signals across duplicates.
+
+<strong>Thin content pages:</strong> Category or tag pages with little unique text get filtered out of the index as low value. Add genuine descriptive content above the product/post grid on these pages.
+
+<strong>Redirect chains:</strong> Multiple 301 redirects stacked on top of each other slow crawling and can eventually cause Google to drop the page. Always redirect straight to the final URL.</p>
+
+        <h2 class="h4 fw-bold text-ivory mt-5 mb-3">4. Mobile Usability: The Non-Negotiable in Pakistan</h2>
+        <p>Google indexes and ranks your site based primarily on its mobile version — and in Pakistan, upwards of 80% of search traffic to most business sites is mobile. Check for:
+
+<ul>
+<li>Tap targets (buttons, links) large enough to tap accurately with a thumb</li>
+<li>Text readable without pinch-zooming</li>
+<li>No horizontal scrolling on standard screen widths</li>
+<li>Pop-ups and WhatsApp widgets that don't cover the full screen on mobile</li>
+<li>Forms that work correctly with mobile keyboards (correct input types for phone numbers, email)</li>
+</ul></p>
+
+        <h2 class="h4 fw-bold text-ivory mt-5 mb-3">5. Schema Markup: Helping Google (and AI Engines) Understand Your Content</h2>
+        <p>Structured data in JSON-LD format tells search engines exactly what a page contains — a product, an article, an FAQ, a local business. Pages with correct schema markup are more likely to earn rich results (star ratings, FAQ dropdowns, price snippets) and are increasingly important for being cited correctly by AI search engines like ChatGPT and Google's AI Overviews.
+
+Priority schema types for most Pakistani business sites: <strong>Organization</strong>, <strong>Product</strong> with <strong>AggregateRating</strong> for stores, <strong>Article</strong> for blog content, <strong>FAQPage</strong> for FAQ sections, and <strong>LocalBusiness</strong> for location-based services.
+
+Our <a href="/services/premium-schema-markup/">Premium Schema Markup service</a> implements and validates all relevant schema types across your site. For more on how this connects to AI search visibility, see our guide on <a href="/blog/geo-ai-search-optimization/">GEO and AI search optimization</a>.</p>
+
+        <h2 class="h4 fw-bold text-ivory mt-5 mb-3">6. HTTPS, Redirects & URL Structure</h2>
+        <p>Basic hygiene items that still trip up a surprising number of Pakistani business sites:
+
+<ul>
+<li><strong>HTTPS everywhere:</strong> Mixed content (some resources loading over http://) triggers browser warnings that hurt trust and rankings.</li>
+<li><strong>One canonical domain:</strong> Pick www or non-www, and http or https, and redirect every variant to that single version — never let Google index both.</li>
+<li><strong>Clean, descriptive URLs:</strong> /services/local-seo/ ranks better and looks more trustworthy than /page.php?id=482.</li>
+</ul></p>
+
+        <h2 class="h4 fw-bold text-ivory mt-5 mb-3">Running Your Own Quick Technical Audit</h2>
+        <p>Start with these free tools before commissioning a professional audit:
+
+<ul>
+<li><strong>Google Search Console</strong> — Core Web Vitals report, Pages/Indexing report, mobile usability</li>
+<li><strong>PageSpeed Insights</strong> — real-world LCP, INP, and CLS scores for any URL</li>
+<li><strong>Screaming Frog (free up to 500 URLs)</strong> — crawl your entire site to find broken links, missing meta tags, and redirect chains</li>
+<li><strong>Google's Rich Results Test</strong> — validate your schema markup renders correctly</li>
+</ul>
+
+If these tools surface more issues than you have time to fix, that's exactly what a professional technical audit is for.</p>
+
+          <div class="mt-5 p-4 rounded-4" style="background:var(--surface-dark);border:1px solid rgba(255,102,0,0.2)">
+            <h3 class="h5 fw-bold text-ivory mb-2">Get a Full Technical SEO Audit</h3>
+            <p class="mb-3">Our <a href="/services/premium-technical-seo-audit/">Premium Technical SEO Audit</a> covers every item above with a prioritized fix list, plus <a href="/services/advanced-core-web-vitals/">Core Web Vitals optimization</a> and <a href="/services/complete-onpage-seo-optimization/">on-page SEO fixes</a> if you want us to implement the changes for you.</p>
+            <p class="small text-gray mb-0">Contact SEO Ustaad on <a href="https://wa.me/923146348900" class="text-orange">WhatsApp</a> or email <a href="mailto:support@seoustaad.com" class="text-orange">support@seoustaad.com</a> for a free consultation.</p>
+          </div>
+        </div>
+
+        <div class="mt-5" style="max-width:850px">
+          <FAQ category="seo" />
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+  <WhatsappWidget slot="widget" />
+</Layout>

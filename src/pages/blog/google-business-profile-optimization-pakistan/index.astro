@@ -1,0 +1,114 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import WhatsappWidget from '../../../components/WhatsappWidget.astro';
+import FAQ from '../../../components/FAQ.astro';
+import posts from '../../../../blog-posts.json';
+
+const post = posts.find(p => p.slug === 'google-business-profile-optimization-pakistan');
+const title = 'Google Business Profile Optimization 2026: Rank #1 on Google Maps in Pakistan | SEO Ustaad';
+const description = 'Step-by-step Google Business Profile optimization for Pakistani businesses — categories, photos, reviews, posts, and the local ranking factors that determine your Map Pack position.';
+const canonicalUrl = 'https://www.seoustaad.com/blog/google-business-profile-optimization-pakistan/';
+---
+
+<Layout title={title} description={description} canonicalUrl={canonicalUrl}>
+  <Header slot="header" />
+
+  <section class="py-5" style="padding-top:140px!important;background:var(--bg-dark)">
+    <div class="container py-4">
+      <a href="/blog/" class="text-orange text-decoration-none small mb-3 d-inline-block">&larr; Back to Blog</a>
+      <article>
+        <header class="mb-5">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="badge bg-transparent border border-secondary text-secondary small px-3 py-2">2026-09-13</span>
+            <span class="text-orange small fw-semibold">{post ? post.category : 'Guide'}</span>
+          </div>
+          <h1 class="outfit display-4 fw-bold text-ivory mb-4">{post ? post.title : title}</h1>
+          <p class="lead text-gray" style="max-width:800px">{post ? post.excerpt : description}</p>
+        </header>
+
+        <div class="text-gray" style="max-width:850px;line-height:1.9;font-size:1.05rem">
+        <h2 class="h4 fw-bold text-ivory mt-5 mb-3">Why the Map Pack Matters More Than Your Website</h2>
+        <p>When someone in Karachi searches "SEO agency near me" or "best bakery in Gulberg," Google shows the Map Pack — three local businesses with a map, ratings, and contact buttons — above every regular website result. For most local searches, users click a Map Pack result before they ever scroll to see organic listings.
+
+Your Google Business Profile (GBP), not your website, is what determines whether you appear in that Map Pack. Here's exactly how the ranking works and how to win it.</p>
+
+        <h2 class="h4 fw-bold text-ivory mt-5 mb-3">The Three Factors Google Uses to Rank the Map Pack</h2>
+        <p>Google has confirmed local ranking comes down to three factors, and understanding them changes how you prioritize your time:
+
+<strong>Relevance:</strong> How well your profile matches what the searcher is looking for. This comes from your business categories, services list, and the description and posts you write.
+
+<strong>Distance:</strong> How far your business is from the searcher (or the location they searched). You can't change this for a searcher's specific location, but choosing an accurate address and service-area settings ensures you show up for the right radius.
+
+<strong>Prominence:</strong> How well-known and reputable your business is — based on review count, review score, citations across the web, and links to your site. This is the factor with the most room to improve and compete on.</p>
+
+        <h2 class="h4 fw-bold text-ivory mt-5 mb-3">1. Complete Every Field — Don't Leave Anything Blank</h2>
+        <p>Profiles with every field filled out rank better and convert better. At minimum:
+
+<ul>
+<li><strong>Exact business name</strong> — matching your signage and legal name exactly. Don't stuff keywords into your name field; Google actively penalizes this.</li>
+<li><strong>Precise address</strong> — with Pakistani landmarks in the address line where helpful ("near Liberty Market") since GPS accuracy varies by area.</li>
+<li><strong>Correct phone number</strong> — a local number, not a call-forwarding number from another city.</li>
+<li><strong>Accurate hours</strong> — including special hours for Eid and public holidays, updated in advance.</li>
+<li><strong>Website URL</strong> — link to your homepage or, better, a dedicated location/service landing page.</li>
+</ul></p>
+
+        <h2 class="h4 fw-bold text-ivory mt-5 mb-3">2. Choose Categories Strategically</h2>
+        <p>Your primary category carries significant ranking weight — it's the single biggest lever most businesses get wrong. Pick the most specific category that describes your core business ("Digital Marketing Agency" rather than just "Marketing Agency" if that's genuinely your focus), then add secondary categories for every other service you legitimately offer.
+
+Check what categories your top-ranking competitors use (visible on their profile) as a benchmark, but never select a category you don't actually operate under — Google actively suspends profiles for this.</p>
+
+        <h2 class="h4 fw-bold text-ivory mt-5 mb-3">3. Reviews: The Single Biggest Lever for Prominence</h2>
+        <p><strong>Volume and velocity matter.</strong> A steady stream of new reviews signals an active, trustworthy business — a burst of 50 reviews in one week followed by silence looks manufactured to both Google and customers.
+
+<strong>Make it easy to leave a review.</strong> Send customers your direct GBP review link via WhatsApp right after a successful job or delivery — the easier the ask, the higher your response rate.
+
+<strong>Respond to every review.</strong> Thank positive reviewers by name and mention the service they used (this reinforces relevance keywords naturally). Respond to negative reviews professionally within 24 hours — how you handle criticism is itself a trust signal to future customers reading your profile.
+
+<strong>Never buy fake reviews.</strong> Google's spam detection has gotten very effective at identifying and removing suspicious review patterns, and it can suspend your entire profile.</p>
+
+        <h2 class="h4 fw-bold text-ivory mt-5 mb-3">4. Photos and Videos</h2>
+        <p>Businesses with photos get significantly more requests for directions and website clicks than those without. Upload and refresh regularly:
+
+<ul>
+<li>Exterior shots (helps customers recognize your location)</li>
+<li>Interior/workspace photos</li>
+<li>Team photos (builds trust for service businesses)</li>
+<li>Product or work samples</li>
+<li>Short videos of your process or space</li>
+</ul>
+
+Avoid stock photos — Google and customers can both tell, and it undermines the trust signal photos are meant to build.</p>
+
+        <h2 class="h4 fw-bold text-ivory mt-5 mb-3">5. Google Posts: Free, Underused Visibility</h2>
+        <p>GBP Posts let you publish offers, updates, and events directly to your profile — they appear right in the Map Pack listing. Most Pakistani businesses never touch this feature, which makes it an easy way to stand out. Post weekly about promotions, new services, or completed projects to signal an active business to Google's algorithm.</p>
+
+        <h2 class="h4 fw-bold text-ivory mt-5 mb-3">6. NAP Consistency Across the Web</h2>
+        <p>Google cross-checks your Name, Address, and Phone (NAP) against citations on other websites — directories, social profiles, and mentions across the web. Inconsistencies ("St." vs "Street," an old phone number still listed somewhere) weaken the trust signal that feeds your prominence score.
+
+For a full citation-building strategy across Pakistani and international directories, see our <a href="/blog/local-seo-pakistan-guide/">complete Local SEO guide for Pakistan</a>. Our <a href="/services/premium-local-citations/">Premium Local Citation service</a> handles this cleanup and buildout across 50+ directories with guaranteed NAP consistency.</p>
+
+        <h2 class="h4 fw-bold text-ivory mt-5 mb-3">7. Multi-City and Multi-Location Businesses</h2>
+        <p>If you serve multiple Pakistani cities, create a separate GBP listing for each real physical location (never a fake address just to rank in more cities — Google suspends this) and back each one with a dedicated geo-targeted landing page on your website. Our <a href="/services/geo-targeted-landing-page-copy/">Geo-Targeted Landing Page Copywriting service</a> builds these city-specific pages to support each listing.</p>
+
+        <h2 class="h4 fw-bold text-ivory mt-5 mb-3">Tracking Your Google Business Profile Performance</h2>
+        <p>Check GBP Insights monthly for: search views vs. map views, "how customers found you" (direct vs. discovery searches), direction requests, and call clicks. A rising discovery-search percentage is the clearest sign your Map Pack ranking is improving.</p>
+
+          <div class="mt-5 p-4 rounded-4" style="background:var(--surface-dark);border:1px solid rgba(255,102,0,0.2)">
+            <h3 class="h5 fw-bold text-ivory mb-2">Get Your Business Ranking on Google Maps</h3>
+            <p class="mb-3">Our <a href="/services/premium-gmb-setup/">GBP Setup & Optimization service</a> handles every step above, and our <a href="/services/premium-local-seo-retainer/">Premium Local SEO Retainer</a> keeps you ranking with ongoing citation building, review management, and monthly posts.</p>
+            <p class="small text-gray mb-0">Contact SEO Ustaad on <a href="https://wa.me/923146348900" class="text-orange">WhatsApp</a> or email <a href="mailto:support@seoustaad.com" class="text-orange">support@seoustaad.com</a> for a free consultation.</p>
+          </div>
+        </div>
+
+        <div class="mt-5" style="max-width:850px">
+          <FAQ category="local" />
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+  <WhatsappWidget slot="widget" />
+</Layout>
