@@ -21,9 +21,12 @@ const title = `SEO Agency in ${city} | SEO Ustaad`;
 const description = `Looking for a local SEO consultant in ${city}? SEO Ustaad provides premium eCommerce web design services and affordable WordPress developers in ${city} starting at just 5,000 PKR. Dominate your local market today!`;
 const canonicalUrl = `https://www.seoustaad.com/locations/${slug}/`;
 
-const servicesInCityHtml = gigs.map(gig =>
-  `<li style="flex: 1 1 300px;"><a href="/services/${gig.slug}-in-${citySlug}/" class="text-orange text-decoration-none border-bottom border-orange border-opacity-25 pb-1 d-inline-block hover-lift"><i class="fas fa-chevron-right small me-2"></i>${gig.name}</a></li>`
-).join('');
+const servicesInCityHtml = gigs
+  .filter(gig => !gig.slug.includes('-in-'))
+  .map(gig =>
+    `<li style="flex: 1 1 300px;"><a href="/services/${gig.slug}-in-${citySlug}/" class="text-orange text-decoration-none border-bottom border-orange border-opacity-25 pb-1 d-inline-block hover-lift"><i class="fas fa-chevron-right small me-2"></i>${gig.name}</a></li>`
+  ).join('');
+
 
 const localBusinessSchema = JSON.stringify({
   "@context": "https://schema.org",

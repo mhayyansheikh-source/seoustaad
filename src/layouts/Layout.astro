@@ -7,16 +7,19 @@ export interface Props {
 
 const { title, description = "Premium SEO, Web Development, and SMM services for the Pakistani market.", canonicalUrl } = Astro.props;
 
+const defaultCanonical = new URL(Astro.url.pathname, 'https://www.seoustaad.com').href;
+const activeCanonical = canonicalUrl || defaultCanonical;
+
 const organizationSchema = JSON.stringify({
     "@context": "https://schema.org",
     "@graph": [
         {
             "@type": "ProfessionalService",
-            "@id": "https://seoustaad.com/#organization",
+            "@id": "https://www.seoustaad.com/#organization",
             "name": "SEO Ustaad",
-            "url": "https://seoustaad.com/",
-            "logo": "https://seoustaad.com/images/logo.svg",
-            "image": "https://seoustaad.com/og-image.png",
+            "url": "https://www.seoustaad.com/",
+            "logo": "https://www.seoustaad.com/images/logo.svg",
+            "image": "https://www.seoustaad.com/og-image.png",
             "description": "Premium SEO, Web Development, and Social Media Marketing agency serving Pakistan.",
             "areaServed": {
                 "@type": "Country",
@@ -26,25 +29,26 @@ const organizationSchema = JSON.stringify({
         },
         {
             "@type": "WebSite",
-            "@id": "https://seoustaad.com/#website",
-            "url": "https://seoustaad.com/",
+            "@id": "https://www.seoustaad.com/#website",
+            "url": "https://www.seoustaad.com/",
             "name": "SEO Ustaad",
             "publisher": {
-                "@id": "https://seoustaad.com/#organization"
+                "@id": "https://www.seoustaad.com/#organization"
             }
         },
         {
             "@type": "WebPage",
-            "@id": `${canonicalUrl || Astro.url}#webpage`,
-            "url": canonicalUrl || Astro.url,
+            "@id": `${activeCanonical}#webpage`,
+            "url": activeCanonical,
             "name": title,
             "description": description,
             "isPartOf": {
-                "@id": "https://seoustaad.com/#website"
+                "@id": "https://www.seoustaad.com/#website"
             }
         }
     ]
 });
+
 ---
 
 <!DOCTYPE html>
@@ -61,7 +65,7 @@ const organizationSchema = JSON.stringify({
     <meta property="og:title" content={title}>
     <meta property="og:description" content={description}>
     <meta property="og:image" content="/images/logo.svg">
-    <meta property="og:url" content={canonicalUrl || Astro.url}>
+    <meta property="og:url" content={activeCanonical}>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -69,18 +73,19 @@ const organizationSchema = JSON.stringify({
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/style.min.css">
     
-    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    <link rel="canonical" href={activeCanonical} />
     
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="icon" href="/favicon.ico">
     <link rel="manifest" href="/site.webmanifest">
-    <meta property="og:image" content="https://seoustaad.com/og-image.png">
+    <meta property="og:image" content="https://www.seoustaad.com/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://seoustaad.com/og-image.png">
+    <meta name="twitter:image" content="https://www.seoustaad.com/og-image.png">
+
     <script type="application/ld+json" set:html={organizationSchema} />
     <script async src="https://static.opinly.ai/p.js" data-key="pk--na2JQ535j39joS0LNLUGQr5jJDdKWzDPGggXeP"></script>
 </head>
