@@ -1,0 +1,108 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import WhatsappWidget from '../../../components/WhatsappWidget.astro';
+import { opinly, opinlyConfig } from '../../../lib/opinly';
+import { buildPersonJsonLd } from '@opinly/shared';
+
+export async function getStaticPaths() {
+  try {
+    const res = await opinly.authors();
+    const authors = res.data || [];
+    return authors.map((author: any) => ({
+      params: { slug: author.slug },
+      props: { author }
+    }));
+  } catch (e) {
+    console.warn('Could not fetch authors for getStaticPaths:', e);
+    return [];
+  }
+}
+
+const { author } = Astro.props;
+const authorSlug = Astro.params.slug;
+
+let authorData = author;
+let authorPosts: any[] = [];
+
+try {
+  if (!authorData) {
+    const res = await opinly.author(authorSlug);
+    authorData = res;
+  }
+  const postRes = await opinly.posts({ author: authorSlug, limit: 50 });
+  authorPosts = postRes.data || [];
+} catch (e) {
+  console.warn(`Could not fetch details for author ${authorSlug}:`, e);
+}
+
+const title = `${authorData?.name || authorSlug} | Author at SEO Ustaad`;
+const description = authorData?.bio || `Articles and publications by ${authorData?.name || authorSlug} at SEO Ustaad.`;
+const canonicalUrl = `https://www.seoustaad.com/blog/authors/${authorSlug}/`;
+const personJsonLd = authorData ? buildPersonJsonLd(authorData, opinlyConfig) : null;
+---
+
+<Layout title={title} description={description} canonicalUrl={canonicalUrl}>
+  <Header slot="header" />
+
+  {personJsonLd && <script type="application/ld+json" set:html={JSON.stringify(personJsonLd)} />}
+
+  <section class="py-5" style="padding-top:140px!important;background:var(--bg-dark)">
+    <div class="container py-4 text-center">
+      <a href="/blog/authors/" class="text-orange text-decoration-none small mb-3 d-inline-block">&larr; Back to Authors</a>
+      <div class="d-flex justify-content-center mb-3">
+        {authorData?.avatar_url ? (
+          <img src={authorData.avatar_url} alt={authorData.name} class="rounded-circle border border-orange border-opacity-50" style="width:90px;height:90px;object-fit:cover;" />
+        ) : (
+          <div class="avatar-init bg-orange rounded-circle d-flex align-items-center justify-content-center text-white fw-bold fs-3" style="width:90px;height:90px;">
+            {authorData?.name ? authorData.name[0] : 'A'}
+          </div>
+        )}
+      </div>
+      <h1 class="outfit display-4 fw-bold text-ivory mb-2">{authorData?.name || authorSlug}</h1>
+      {authorData?.role && <p class="text-orange fw-semibold mb-3">{authorData.role}</p>}
+      {authorData?.bio && (
+        <p class="text-gray lead mx-auto" style="max-width:650px">
+          {authorData.bio}
+        </p>
+      )}
+    </div>
+  </section>
+
+  <section class="py-5 bg-dark">
+    <div class="container">
+      <h2 class="outfit h3 text-ivory mb-4">Articles by {authorData?.name || authorSlug}</h2>
+      {authorPosts.length === 0 ? (
+        <div class="text-center py-5">
+          <p class="text-gray lead">No articles published by this author yet.</p>
+        </div>
+      ) : (
+        <div class="row g-4">
+          {authorPosts.map((post: any) => (
+            <div class="col-lg-4 col-md-6">
+              <a href={`/blog/${post.slug}/`} class="text-decoration-none">
+                <div class="card h-100 bg-darker border-secondary border-opacity-25 text-white p-4 rounded-4" style="transition:transform .2s,border-color .2s">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="badge bg-transparent border border-secondary text-secondary small px-2 py-1">
+                      {post.published_at ? post.published_at.split('T')[0] : (post.created_at ? post.created_at.split('T')[0] : '')}
+                    </span>
+                    <span class="small fw-semibold text-orange">Article</span>
+                  </div>
+                  <h3 class="h5 fw-bold outfit mb-2 text-ivory">{post.title}</h3>
+                  <p class="text-gray small mb-0">{post.description || post.excerpt}</p>
+                  <div class="mt-3">
+                    <span class="text-orange small fw-semibold">Read More &rarr;</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+  <WhatsappWidget slot="widget" />
+</Layout>

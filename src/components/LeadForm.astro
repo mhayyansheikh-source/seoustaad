@@ -527,6 +527,28 @@ const categoriesMap = rootGigs.reduce((acc, gig) => {
         loading.classList.add('d-none');
 
         if (res.ok) {
+          // Instrument Opinly Analytics: Identify user & track conversion event
+          try {
+            if (window.opinly) {
+              const email = data.email;
+              if (email) {
+                window.opinly.identify({ email: email });
+              }
+              window.opinly.track('generate_lead', {
+                service: data.service,
+                location: data.location,
+                timeline: data.timeline,
+                price: data.price,
+                currency: 'PKR',
+              }, {
+                email: email,
+                anonId: window.opinly.anonId,
+              });
+            }
+          } catch (trackingErr) {
+            console.warn('Opinly tracking error:', trackingErr);
+          }
+
           success.classList.remove('d-none');
           success.classList.add('d-flex');
         } else {

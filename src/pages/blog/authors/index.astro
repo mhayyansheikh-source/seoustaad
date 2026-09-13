@@ -1,0 +1,73 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import WhatsappWidget from '../../../components/WhatsappWidget.astro';
+import { opinly } from '../../../lib/opinly';
+
+let authorsList: any[] = [];
+try {
+  const res = await opinly.authors();
+  authorsList = res.data || [];
+} catch (e) {
+  console.warn('Could not fetch authors from Opinly:', e);
+}
+
+const title = "Our Authors | SEO Ustaad";
+const description = "Meet the SEO strategists, web engineers, and digital marketing leaders writing for SEO Ustaad.";
+const canonicalUrl = "https://www.seoustaad.com/blog/authors/";
+---
+
+<Layout title={title} description={description} canonicalUrl={canonicalUrl}>
+  <Header slot="header" />
+
+  <section class="py-5" style="padding-top:140px!important;background:var(--bg-dark)">
+    <div class="container py-4 text-center">
+      <a href="/blog/" class="text-orange text-decoration-none small mb-3 d-inline-block">&larr; Back to Blog</a>
+      <h1 class="outfit display-4 fw-bold text-ivory mb-3">Our <span class="text-orange">Authors</span></h1>
+      <p class="text-gray lead mx-auto" style="max-width:600px">
+        Meet our contributors, technical SEO specialists, and software engineers.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-5 bg-dark">
+    <div class="container">
+      {authorsList.length === 0 ? (
+        <div class="text-center py-5">
+          <p class="text-gray lead">Authors directory is coming soon.</p>
+          <a href="/blog/" class="btn btn-outline-orange mt-3">Read Latest Articles</a>
+        </div>
+      ) : (
+        <div class="row g-4">
+          {authorsList.map((author: any) => (
+            <div class="col-lg-4 col-md-6">
+              <a href={`/blog/authors/${author.slug}/`} class="text-decoration-none">
+                <div class="card h-100 bg-darker border-secondary border-opacity-25 text-white p-4 rounded-4" style="transition:transform .2s,border-color .2s">
+                  <div class="d-flex align-items-center gap-3 mb-3">
+                    {author.avatar_url ? (
+                      <img src={author.avatar_url} alt={author.name} class="rounded-circle" style="width:50px;height:50px;object-fit:cover;" />
+                    ) : (
+                      <div class="avatar-init bg-orange rounded-circle d-flex align-items-center justify-content-center text-white fw-bold" style="width:50px;height:50px;">
+                        {author.name ? author.name[0] : 'A'}
+                      </div>
+                    )}
+                    <div>
+                      <h3 class="h5 fw-bold outfit mb-0 text-ivory">{author.name}</h3>
+                      {author.role && <span class="small text-gray">{author.role}</span>}
+                    </div>
+                  </div>
+                  {author.bio && <p class="text-gray small mb-3">{author.bio}</p>}
+                  <span class="text-orange small fw-semibold">View Articles &rarr;</span>
+                </div>
+              </a>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+  <WhatsappWidget slot="widget" />
+</Layout>

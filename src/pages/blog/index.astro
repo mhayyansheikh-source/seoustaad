@@ -4,8 +4,34 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import WhatsappWidget from '../../components/WhatsappWidget.astro';
 import posts from '../../../blog-posts.json';
+import { opinly } from '../../lib/opinly';
 
-const sortedPosts = [...posts].sort((a, b) => new Date(b.date) - new Date(a.date));
+let opinlyPosts: any[] = [];
+try {
+  const res = await opinly.posts({ limit: 50 });
+  opinlyPosts = res.data || [];
+} catch (e) {
+  console.warn('Could not fetch posts from Opinly:', e);
+}
+
+// Merge Opinly posts with local posts (avoid duplicate slugs)
+const localPostSlugs = new Set(posts.map(p => p.slug));
+const mappedOpinlyPosts = opinlyPosts.map(p => ({
+  slug: p.slug,
+  title: p.title,
+  excerpt: p.description || p.excerpt || '',
+  date: p.published_at ? p.published_at.split('T')[0] : (p.created_at ? p.created_at.split('T')[0] : '2026-09-13'),
+  category: (p.categories && p.categories[0]?.slug) || 'guide',
+  tags: p.tags ? p.tags.map((t: any) => t.name || t.slug || t) : [],
+  isOpinly: true
+}));
+
+const allPosts = [
+  ...mappedOpinlyPosts,
+  ...posts.filter(p => !opinlyPosts.some(op => op.slug === p.slug))
+];
+
+const sortedPosts = [...allPosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 const categoryLabels = {
   'best-practices': 'Best Practices',
   'news': 'Web Dev News',

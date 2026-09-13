@@ -5,8 +5,10 @@ import Footer from '../../components/Footer.astro';
 import WhatsappWidget from '../../components/WhatsappWidget.astro';
 import posts from '../../../blog-posts.json';
 import { DROPSHIPPING_CITIES } from '../../data/dropshipping-cities';
+import { opinly, opinlyConfig } from '../../lib/opinly';
+import { renderToHtml, buildBlogPostingJsonLd } from '@opinly/shared';
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
   const hasDedicatedPage = new Set([
     ...DROPSHIPPING_CITIES.map(c => `shopify-dropshipping-${c.slug}`),
     'backend-development-guide',
@@ -27,15 +29,62 @@ export function getStaticPaths() {
     'web-development-best-practices',
     'wordpress-vs-shopify-pakistan',
   ]);
-  return posts
+
+  const localPaths = posts
     .filter(post => !hasDedicatedPage.has(post.slug))
     .map(post => ({
       params: { slug: post.slug },
-      props: { post }
+      props: { post, isOpinly: false, renderedHtml: '', jsonLd: null }
     }));
+
+  let opinlyPaths: any[] = [];
+  try {
+    const res = await opinly.posts({ limit: 100 });
+    const fetchedOpinlyPosts = res.data || [];
+    
+    // For each Opinly post, fetch full post and prerender HTML & JSON-LD
+    const promises = fetchedOpinlyPosts.map(async (p) => {
+      try {
+        const fullPost = await opinly.post(p.slug);
+        if (!fullPost) return null;
+        const html = renderToHtml(fullPost.content, { config: opinlyConfig });
+        const jsonLd = buildBlogPostingJsonLd(fullPost, opinlyConfig);
+        return {
+          params: { slug: p.slug },
+          props: {
+            post: {
+              slug: p.slug,
+              title: fullPost.title,
+              excerpt: fullPost.description || fullPost.excerpt || '',
+              date: fullPost.published_at ? fullPost.published_at.split('T')[0] : (fullPost.created_at ? fullPost.created_at.split('T')[0] : '2026-09-13'),
+              category: (fullPost.categories && fullPost.categories[0]?.name) || 'Blog',
+              tags: fullPost.tags ? fullPost.tags.map((t: any) => t.name || t.slug || t) : [],
+            },
+            isOpinly: true,
+            renderedHtml: html,
+            jsonLd,
+          }
+        };
+      } catch (err) {
+        console.warn(`Could not render Opinly post ${p.slug}:`, err);
+        return null;
+      }
+    });
+
+    const results = await Promise.all(promises);
+    opinlyPaths = results.filter(Boolean);
+  } catch (err) {
+    console.warn('Could not fetch routes/posts from Opinly during build:', err);
+  }
+
+  // Combine paths, avoiding duplicate slugs
+  const existingSlugs = new Set(localPaths.map(p => p.params.slug));
+  const uniqueOpinlyPaths = opinlyPaths.filter(p => !existingSlugs.has(p.params.slug));
+
+  return [...localPaths, ...uniqueOpinlyPaths];
 }
 
-const { post } = Astro.props;
+const { post, isOpinly, renderedHtml, jsonLd } = Astro.props;
 const title = `${post.title} | SEO Ustaad Blog`;
 const description = post.excerpt;
 const canonicalUrl = `https://www.seoustaad.com/blog/${post.slug}/`;
@@ -43,6 +92,8 @@ const canonicalUrl = `https://www.seoustaad.com/blog/${post.slug}/`;
 
 <Layout title={title} description={description} canonicalUrl={canonicalUrl}>
   <Header slot="header" />
+
+  {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
 
   <section class="py-5" style="padding-top:120px;background:var(--bg-dark)">
     <div class="container py-4">
@@ -56,13 +107,17 @@ const canonicalUrl = `https://www.seoustaad.com/blog/${post.slug}/`;
           <h1 class="outfit display-5 fw-bold text-ivory mb-3">{post.title}</h1>
           <p class="lead text-gray">{post.excerpt}</p>
           <div class="d-flex flex-wrap gap-2 mt-3">
-            {post.tags.map(tag => (
+            {post.tags && post.tags.map((tag: string) => (
               <span class="badge bg-darker border border-secondary border-opacity-25 text-secondary small px-3 py-2">#{tag}</span>
             ))}
           </div>
         </header>
-        <div class="text-gray" style="max-width:800px;line-height:1.8">
-          <slot />
+        <div class="text-gray opinly-rendered-content" style="max-width:800px;line-height:1.8">
+          {isOpinly ? (
+            <div set:html={renderedHtml} />
+          ) : (
+            <slot />
+          )}
         </div>
       </article>
     </div>

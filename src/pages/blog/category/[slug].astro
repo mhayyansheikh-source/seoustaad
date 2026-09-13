@@ -1,0 +1,85 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import WhatsappWidget from '../../../components/WhatsappWidget.astro';
+import { opinly } from '../../../lib/opinly';
+
+export async function getStaticPaths() {
+  try {
+    const categories = await opinly.categories();
+    return (categories || []).map((cat: any) => ({
+      params: { slug: cat.slug },
+      props: { category: cat }
+    }));
+  } catch (e) {
+    console.warn('Could not fetch categories from Opinly for getStaticPaths:', e);
+    return [];
+  }
+}
+
+const { category } = Astro.props;
+const categorySlug = Astro.params.slug;
+
+let categoryPosts: any[] = [];
+try {
+  const res = await opinly.posts({ category: categorySlug, limit: 50 });
+  categoryPosts = res.data || [];
+} catch (e) {
+  console.warn(`Could not fetch posts for category ${categorySlug}:`, e);
+}
+
+const title = `${category?.name || categorySlug} | SEO Ustaad Blog`;
+const description = `Articles in ${category?.name || categorySlug} from SEO Ustaad.`;
+const canonicalUrl = `https://www.seoustaad.com/blog/category/${categorySlug}/`;
+---
+
+<Layout title={title} description={description} canonicalUrl={canonicalUrl}>
+  <Header slot="header" />
+
+  <section class="py-5" style="padding-top:140px!important;background:var(--bg-dark)">
+    <div class="container py-4 text-center">
+      <a href="/blog/" class="text-orange text-decoration-none small mb-3 d-inline-block">&larr; Back to All Articles</a>
+      <h1 class="outfit display-4 fw-bold text-ivory mb-3">Category: <span class="text-orange">{category?.name || categorySlug}</span></h1>
+      <p class="text-gray lead mx-auto" style="max-width:600px">
+        Browse our latest insights and strategies in {category?.name || categorySlug}.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-5 bg-dark">
+    <div class="container">
+      {categoryPosts.length === 0 ? (
+        <div class="text-center py-5">
+          <p class="text-gray lead">No articles published in this category yet.</p>
+          <a href="/blog/" class="btn btn-outline-orange mt-3">View All Blog Posts</a>
+        </div>
+      ) : (
+        <div class="row g-4">
+          {categoryPosts.map((post: any) => (
+            <div class="col-lg-4 col-md-6">
+              <a href={`/blog/${post.slug}/`} class="text-decoration-none">
+                <div class="card h-100 bg-darker border-secondary border-opacity-25 text-white p-4 rounded-4" style="transition:transform .2s,border-color .2s">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="badge bg-transparent border border-secondary text-secondary small px-2 py-1">
+                      {post.published_at ? post.published_at.split('T')[0] : (post.created_at ? post.created_at.split('T')[0] : '')}
+                    </span>
+                    <span class="small fw-semibold text-orange">{category?.name || categorySlug}</span>
+                  </div>
+                  <h3 class="h5 fw-bold outfit mb-2 text-ivory">{post.title}</h3>
+                  <p class="text-gray small mb-0">{post.description || post.excerpt}</p>
+                  <div class="mt-3">
+                    <span class="text-orange small fw-semibold">Read More &rarr;</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+  <WhatsappWidget slot="widget" />
+</Layout>
