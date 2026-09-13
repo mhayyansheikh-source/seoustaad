@@ -10,7 +10,30 @@ const selectedFaqs = shuffledFaqs.slice(0, count);
 
 // We need a unique ID for the accordion to avoid conflicts if multiple are on the same page
 const accordionId = `faqAccordion_${Math.random().toString(36).substring(2, 9)}`;
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": selectedFaqs.map(faq => {
+    const q = faq.q.replace(/__CITY__/g, city).replace(/__GIG_NAME__/g, gigName);
+    const rawAnswer = faq.a
+      .replace(/__CITY__/g, city)
+      .replace(/__GIG_NAME__/g, gigName)
+      .replace(/<[^>]+>/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+    return {
+      "@type": "Question",
+      "name": q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": rawAnswer
+      }
+    };
+  })
+});
 ---
+<script type="application/ld+json" set:html={faqSchema} />
 <section class="py-5 bg-darker">
     <div class="container py-5">
         <div class="text-center mb-5 stagger-reveal">
